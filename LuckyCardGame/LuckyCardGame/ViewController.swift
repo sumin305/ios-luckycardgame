@@ -33,21 +33,28 @@ class ViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        totalHeight = UIScreen.main.bounds.height
+        totalWidth = UIScreen.main.bounds.width
+        padding = totalWidth / 30
         let yellowFrameHeight = 44
         let subViewFrameHeight = (totalHeight
                             - view.safeAreaInsets.top
                             - view.safeAreaInsets.bottom
                             - 3*padding
                             - 44) / 7
-        
+        let grayFrameHeight = (totalHeight
+                               - view.safeAreaInsets.top
+                               - view.safeAreaInsets.bottom
+                               - 9*padding
+                               - 44
+                               - subViewFrameHeight*5)
         yellowView.frame = CGRect(x: padding, y:  view.safeAreaInsets.top + padding , width: totalWidth - 2*padding , height: CGFloat(yellowFrameHeight))
-        grayView.frame = CGRect(x: padding, y: totalHeight - view.safeAreaInsets.bottom - 2*padding - (subViewFrameHeight + 20), width: totalWidth - 2*padding, height: subViewFrameHeight + 2*padding)
+        grayView.frame = CGRect(x: padding, y:     view.safeAreaInsets.top + CGFloat(yellowFrameHeight) + subViewFrameHeight * 5 + 7*padding, width: totalWidth - 2*padding, height: grayFrameHeight)
         middleView.frame = CGRect(x: padding, y: view.safeAreaInsets.top + 2*padding + CGFloat(yellowFrameHeight), width: totalWidth - 2*padding, height: subViewFrameHeight * 6 + 2*padding)
         for view in middleView.subviews {
             (view as? AlphabetView)!.reFrame(x: 0, y: 0, width: totalWidth - 2*padding, height: subViewFrameHeight)
         }
     }
-    
     func addSubViews() {
         view.addSubview(yellowView)
         view.addSubview(middleView)
