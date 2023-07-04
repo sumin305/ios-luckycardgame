@@ -2,17 +2,17 @@ import UIKit
 
 let totalHeight = UIScreen.main.bounds.height
 let totalWidth = UIScreen.main.bounds.width
-let padding = totalWidth / 30
+let padding: CGFloat = totalWidth / 30
 
-class ViewController: UIViewController {
+final class ViewController: UIViewController {
     
-    let yellowView : UIView = {
+    private let yellowView : UIView = {
         let yView = UIView()
         yView.backgroundColor = .yellow
         yView.layer.cornerRadius = 10
         return yView
     
-    let middleView : UIView = {
+    private let middleView : UIView = {
         let mView = UIView()
         [Int](0...4).forEach{
             mView.addSubview(AlphabetView($0))
@@ -20,7 +20,7 @@ class ViewController: UIViewController {
         return mView
     }()
     
-    let grayView : UIView = {
+    private let grayView : UIView = {
         let gView = UIView()
         gView.backgroundColor = .gray
         gView.layer.cornerRadius = 10
@@ -33,33 +33,31 @@ class ViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        let yellowFrameHeight = 44
-        let subViewFrameHeight = (totalHeight
-                            - view.safeAreaInsets.top
-                            - view.safeAreaInsets.bottom
-                            - 3*padding
-                            - 44) / 7
-        let grayFrameHeight = (totalHeight
-                               - view.safeAreaInsets.top
-                               - view.safeAreaInsets.bottom
-                               - 9*padding
-                               - 44
-                               - subViewFrameHeight*5)
-        yellowView.frame = CGRect(x: padding, y:  view.safeAreaInsets.top + padding , width: totalWidth - 2*padding , height: CGFloat(yellowFrameHeight))
-        grayView.frame = CGRect(x: padding, y:     view.safeAreaInsets.top + CGFloat(yellowFrameHeight) + subViewFrameHeight * 5 + 7*padding, width: totalWidth - 2*padding, height: grayFrameHeight)
-        middleView.frame = CGRect(x: padding, y: view.safeAreaInsets.top + 2*padding + CGFloat(yellowFrameHeight), width: totalWidth - 2*padding, height: subViewFrameHeight * 6 + 2*padding)
-        for view in middleView.subviews {
-            (view as? AlphabetView)!.reFrame(x: 0, y: 0, width: totalWidth - 2*padding, height: subViewFrameHeight)
-        }
+        setFrame()
     }
     func addSubViews() {
         view.addSubview(yellowView)
         view.addSubview(middleView)
         view.addSubview(grayView)
     }
+    
+    func setFrame() {
+        let yellowFrameHeight: CGFloat = 44
+        let nonSafeArea = totalHeight - (view.safeAreaInsets.top) - (view.safeAreaInsets.bottom)
+        let alphabetViewFrameHeight = (nonSafeArea - 3*padding - yellowFrameHeight) / CGFloat(7)
+        let grayFrameHeight = nonSafeArea - 9*padding - yellowFrameHeight - alphabetViewFrameHeight*5
+        let subViewWidth = totalWidth - 2*padding
+        
+        yellowView.frame = CGRect(x: padding, y:  view.safeAreaInsets.top + padding , width: subViewWidth , height: CGFloat(yellowFrameHeight))
+        grayView.frame = CGRect(x: padding, y: view.safeAreaInsets.top + CGFloat(yellowFrameHeight) + alphabetViewFrameHeight * 5 + 7*padding, width: subViewWidth, height: grayFrameHeight)
+        middleView.frame = CGRect(x: padding, y: view.safeAreaInsets.top + 2*padding + CGFloat(yellowFrameHeight), width: subViewWidth, height: alphabetViewFrameHeight * 5 + 2*padding)
+        for view in middleView.subviews {
+            (view as? AlphabetView)!.reFrame(x: 0, y: 0, width: subViewWidth, height: alphabetViewFrameHeight)
+        }
+    }
 }
 
-class AlphabetView: UIView {
+final class AlphabetView: UIView {
     
     var alphabet: String
     var target: Int
