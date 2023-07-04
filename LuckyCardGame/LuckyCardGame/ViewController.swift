@@ -34,9 +34,6 @@ class ViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        totalHeight = UIScreen.main.bounds.height
-        totalWidth = UIScreen.main.bounds.width
-        padding = totalWidth / 30
         let yellowFrameHeight = 44
         let subViewFrameHeight = (totalHeight
                             - view.safeAreaInsets.top
