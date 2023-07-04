@@ -1,19 +1,22 @@
 import UIKit
 
-class ViewController: UIViewController {
+let totalHeight = UIScreen.main.bounds.height
+let totalWidth = UIScreen.main.bounds.width
+let padding = totalWidth / 30
 
+class ViewController: UIViewController {
+    
     let yellowView : UIView = {
         let yView = UIView()
         yView.backgroundColor = .yellow
-        yView.frame = CGRect(x: 20, y: 70, width: 353, height: 44)
         yView.layer.cornerRadius = 10
         return yView
     }()
     
     let middleView : UIView = {
         let mView = UIView()
-        for i in 0...4 {
-            mView.addSubview(SubView(i))
+        [Int](0...4).forEach{
+            mView.addSubview(AlphabetView($0))
         }
         return mView
     }()
@@ -21,7 +24,6 @@ class ViewController: UIViewController {
     let grayView : UIView = {
         let gView = UIView()
         gView.backgroundColor = .gray
-        gView.frame = CGRect(x: 20, y: 650, width: 353, height: 130)
         gView.layer.cornerRadius = 10
         return gView
     }()
@@ -31,6 +33,22 @@ class ViewController: UIViewController {
         addSubViews()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        let yellowFrameHeight = 44
+        let subViewFrameHeight = (totalHeight
+                            - view.safeAreaInsets.top
+                            - view.safeAreaInsets.bottom
+                            - 3*padding
+                            - 44) / 7
+        
+        yellowView.frame = CGRect(x: padding, y:  view.safeAreaInsets.top + padding , width: totalWidth - 2*padding , height: CGFloat(yellowFrameHeight))
+        grayView.frame = CGRect(x: padding, y: totalHeight - view.safeAreaInsets.bottom - 2*padding - (subViewFrameHeight + 20), width: totalWidth - 2*padding, height: subViewFrameHeight + 20)
+        middleView.frame = CGRect(x: padding, y: view.safeAreaInsets.top + 2*padding + CGFloat(yellowFrameHeight), width: totalWidth - 2*padding, height: subViewFrameHeight * 6 + 2*padding)
+        for view in middleView.subviews {
+            (view as? AlphabetView)!.reFrame(x: 0, y: 0, width: totalWidth - 2*padding, height: subViewFrameHeight)
+        }
+    }
+    
     func addSubViews() {
         view.addSubview(yellowView)
         view.addSubview(middleView)
@@ -38,14 +56,15 @@ class ViewController: UIViewController {
     }
 }
 
-class SubView: UIView {
+class AlphabetView: UIView {
     
     var alphabet: String
+    var target: Int
     
     init(_ target: Int) {
-        
+        self.target = target
         self.alphabet = String(UnicodeScalar(target + 65)!)
-        super.init(frame: CGRect(x: 20, y: target * 100 + 150, width: 353, height: 90))
+        super.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         self.backgroundColor = .systemGray5
         self.layer.cornerRadius = 10
         self.addSubview(makeAlphabet(alphabet))
@@ -57,26 +76,15 @@ class SubView: UIView {
     
     func makeAlphabet(_ alphabet: String) -> UILabel {
         let label = UILabel()
-        label.textAlignment = .left
         label.text = alphabet
-        label.font = label.font.boldItalic()
+        label.font = UIFont(name: "AvenirNext-BoldItalic", size: 40)
         label.layer.opacity = 0.5
-        label.frame = CGRect(x: 10, y: 0, width: 100, height: 100)
+        label.frame = CGRect(x: padding, y: 25, width: 50, height: 50)
         label.textColor = .systemGray2
         return label
-        
     }
     
-}
-extension UIFont {
-    func withTraits(traits:UIFontDescriptor.SymbolicTraits...) -> UIFont? {
-        guard let descriptorL = self.fontDescriptor.withSymbolicTraits(UIFontDescriptor.SymbolicTraits(traits)) else{
-            return nil
-        }
-        return UIFont(descriptor: descriptorL, size: 40)
-    }
-
-    func boldItalic() -> UIFont? {
-        return withTraits(traits: .traitBold, .traitItalic)
+    func reFrame(x: CGFloat, y: CGFloat, width: CGFloat, height: CGFloat) {
+        self.frame = CGRect(x: x, y: y + CGFloat(target)*(padding + height) , width: width, height:   height)
     }
 }
