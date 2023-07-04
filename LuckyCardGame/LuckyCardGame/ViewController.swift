@@ -42,7 +42,7 @@ class ViewController: UIViewController {
                             - 44) / 7
         
         yellowView.frame = CGRect(x: padding, y:  view.safeAreaInsets.top + padding , width: totalWidth - 2*padding , height: CGFloat(yellowFrameHeight))
-        grayView.frame = CGRect(x: padding, y: totalHeight - view.safeAreaInsets.bottom - 2*padding - (subViewFrameHeight + 20), width: totalWidth - 2*padding, height: subViewFrameHeight + 20)
+        grayView.frame = CGRect(x: padding, y: totalHeight - view.safeAreaInsets.bottom - 2*padding - (subViewFrameHeight + 20), width: totalWidth - 2*padding, height: subViewFrameHeight + 2*padding)
         middleView.frame = CGRect(x: padding, y: view.safeAreaInsets.top + 2*padding + CGFloat(yellowFrameHeight), width: totalWidth - 2*padding, height: subViewFrameHeight * 6 + 2*padding)
         for view in middleView.subviews {
             (view as? AlphabetView)!.reFrame(x: 0, y: 0, width: totalWidth - 2*padding, height: subViewFrameHeight)
