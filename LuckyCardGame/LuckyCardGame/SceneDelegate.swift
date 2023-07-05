@@ -1,10 +1,3 @@
-//
-//  SceneDelegate.swift
-//  LuckyCardGame
-//
-//  Created by 숨 on 2023/07/04.
-//
-
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {

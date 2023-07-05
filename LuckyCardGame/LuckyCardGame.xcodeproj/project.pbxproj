@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ED15ABE22A55520200B743BF /* LuckyCardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED15ABE12A55520200B743BF /* LuckyCardManager.swift */; };
 		ED1B0BF12A5542BE00D2869F /* AlphabetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1B0BF02A5542BE00D2869F /* AlphabetView.swift */; };
 		ED1B0BF32A5542F300D2869F /* ConstantSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1B0BF22A5542F300D2869F /* ConstantSize.swift */; };
+		ED1B0BF52A55485C00D2869F /* LuckyCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1B0BF42A55485C00D2869F /* LuckyCard.swift */; };
 		EDD1C6DC2A53C70500D5CA59 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD1C6DB2A53C70500D5CA59 /* AppDelegate.swift */; };
 		EDD1C6DE2A53C70500D5CA59 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD1C6DD2A53C70500D5CA59 /* SceneDelegate.swift */; };
 		EDD1C6E02A53C70500D5CA59 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD1C6DF2A53C70500D5CA59 /* ViewController.swift */; };
@@ -38,8 +40,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		ED15ABE12A55520200B743BF /* LuckyCardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyCardManager.swift; sourceTree = "<group>"; };
 		ED1B0BF02A5542BE00D2869F /* AlphabetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlphabetView.swift; sourceTree = "<group>"; };
 		ED1B0BF22A5542F300D2869F /* ConstantSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstantSize.swift; sourceTree = "<group>"; };
+		ED1B0BF42A55485C00D2869F /* LuckyCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyCard.swift; sourceTree = "<group>"; };
 		EDD1C6D82A53C70500D5CA59 /* LuckyCardGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LuckyCardGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDD1C6DB2A53C70500D5CA59 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EDD1C6DD2A53C70500D5CA59 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -80,6 +84,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		ED15ABE32A556F1F00B743BF /* LuckyCard */ = {
+			isa = PBXGroup;
+			children = (
+				ED1B0BF42A55485C00D2869F /* LuckyCard.swift */,
+				ED15ABE12A55520200B743BF /* LuckyCardManager.swift */,
+			);
+			path = LuckyCard;
+			sourceTree = "<group>";
+		};
 		EDD1C6CF2A53C70500D5CA59 = {
 			isa = PBXGroup;
 			children = (
@@ -103,6 +116,7 @@
 		EDD1C6DA2A53C70500D5CA59 /* LuckyCardGame */ = {
 			isa = PBXGroup;
 			children = (
+				ED15ABE32A556F1F00B743BF /* LuckyCard */,
 				EDD1C6DB2A53C70500D5CA59 /* AppDelegate.swift */,
 				EDD1C6DD2A53C70500D5CA59 /* SceneDelegate.swift */,
 				EDD1C6DF2A53C70500D5CA59 /* ViewController.swift */,
@@ -267,8 +281,10 @@
 				ED1B0BF32A5542F300D2869F /* ConstantSize.swift in Sources */,
 				EDD1C6E02A53C70500D5CA59 /* ViewController.swift in Sources */,
 				ED1B0BF12A5542BE00D2869F /* AlphabetView.swift in Sources */,
+				ED15ABE22A55520200B743BF /* LuckyCardManager.swift in Sources */,
 				EDD1C6DC2A53C70500D5CA59 /* AppDelegate.swift in Sources */,
 				EDD1C6DE2A53C70500D5CA59 /* SceneDelegate.swift in Sources */,
+				ED1B0BF52A55485C00D2869F /* LuckyCard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
