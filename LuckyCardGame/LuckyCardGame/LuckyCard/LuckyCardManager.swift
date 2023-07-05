@@ -13,7 +13,7 @@ struct CardManager {
         }
     }
     
-    private func printCards() {
+    func printCards() {
         let randomCardsArray = cardsArray.shuffled()
         let randomCardsStringArray = randomCardsArray.map{"\($0.animal)\($0.number < 10 ? "0" + String($0.number) : String($0.number))"}
         print(randomCardsStringArray.joined(separator: ", "))
