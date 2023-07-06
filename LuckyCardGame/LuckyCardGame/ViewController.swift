@@ -2,10 +2,12 @@ import UIKit
 
 final class ViewController: UIViewController {
     
-    private let yellowView = UIView()
+    // segmentTitles을 활용하기 위해 lazy var 사용
+    private lazy var segmentControl = UISegmentedControl(items: segmentTitles)
     private let middleView = UIView()
     private let grayView = UIView()
-  
+    private let segmentTitles: [String] = ["3명", "4명", "5명"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configurateUI()
@@ -19,8 +21,9 @@ final class ViewController: UIViewController {
     }
     
     private func configurateUI() {
-        yellowView.backgroundColor = .yellow
-        yellowView.layer.cornerRadius = ConstantSize.cornerRadiusDegree
+        segmentControl.backgroundColor = .systemGray5
+        segmentControl.tintColor = .white
+        segmentControl.addTarget(self, action: #selector(segmentControllChanged(segcon:)), for: UIControl.Event.valueChanged)
         [Int](0...4).forEach{
             middleView.addSubview(AlphabetView($0))
         }
@@ -29,7 +32,7 @@ final class ViewController: UIViewController {
     }
     
     private func addSubViews() {
-        view.addSubview(yellowView)
+        view.addSubview(segmentControl)
         view.addSubview(middleView)
         view.addSubview(grayView)
     }
@@ -40,12 +43,25 @@ final class ViewController: UIViewController {
         let grayFrameHeight = nonSafeArea - 9*ConstantSize.padding -  ConstantSize.yellowViewHeight - alphabetViewFrameHeight*5
         let subViewWidth = ConstantSize.totalWidth - 2*ConstantSize.padding
         
-        yellowView.frame = CGRect(x: ConstantSize.padding, y:  view.safeAreaInsets.top + ConstantSize.padding , width: subViewWidth , height:  ConstantSize.yellowViewHeight)
+        segmentControl.frame = CGRect(x: ConstantSize.padding, y:  view.safeAreaInsets.top + ConstantSize.padding , width: subViewWidth , height:  ConstantSize.yellowViewHeight)
         grayView.frame = CGRect(x: ConstantSize.padding, y: view.safeAreaInsets.top +  ConstantSize.yellowViewHeight + alphabetViewFrameHeight * 5 + 7*ConstantSize.padding, width: subViewWidth, height: grayFrameHeight)
         middleView.frame = CGRect(x: ConstantSize.padding, y: view.safeAreaInsets.top + 2*ConstantSize.padding +  ConstantSize.yellowViewHeight, width: subViewWidth, height: alphabetViewFrameHeight * 5 + 2*ConstantSize.padding)
         for view in middleView.subviews {
             (view as? AlphabetView)!.reFrame(x: 0, y: 0, width: subViewWidth, height: alphabetViewFrameHeight)
         }
+    }
+    
+    @objc func segmentControllChanged(segcon: UISegmentedControl) {
+        switch segmentControl.selectedSegmentIndex {
+        case 0:
+            print(3)
+        case 1:
+            print(4)
+        case 2:
+            print(5)
+        default: return
+        }
+    
     }
     
     private func printAnimalCards() {
