@@ -1,4 +1,3 @@
-        label.textColor = .systemGray2
 import UIKit
 
 final class ViewController: UIViewController {
