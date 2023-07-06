@@ -51,6 +51,6 @@ final class ViewController: UIViewController {
     private func printAnimalCards() {
         var cm = CardManager()
         cm.makeAllCards()
-        cm.printCards()
+        cm.shuffleAndPrintCard()
     }
 }
