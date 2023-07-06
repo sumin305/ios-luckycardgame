@@ -1,3 +1,4 @@
+    func sceneDidEnterBackground(_ scene: UIScene) {
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {

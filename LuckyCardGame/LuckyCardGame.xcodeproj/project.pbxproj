@@ -1,3 +1,4 @@
+			defaultConfigurationIsVisible = 0;
 // !$*UTF8*$!
 {
 	archiveVersion = 1;
