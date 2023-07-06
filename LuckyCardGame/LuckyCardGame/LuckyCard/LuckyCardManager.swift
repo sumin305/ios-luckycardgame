@@ -19,7 +19,7 @@ struct CardManager {
     }
     
     func printCards() {
-        print(self.cardsArray.map{$0.description}.joined(separator: ", "))
+        print(self.cardsArray.map({ $0.description }).joined(separator: ", "))
     }
     
     mutating func shuffleCards() {

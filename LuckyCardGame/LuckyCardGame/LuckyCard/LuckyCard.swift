@@ -21,13 +21,15 @@ final class LuckyCard {
     private let number: Int
     private let animal: Animal
     private var state: CardState
-    var description: String {
-        return self.animal.rawValue + String(format: "%02d", self.number)
-    }
     
     init(number: Int, animal: Animal, state: CardState) {
         self.number = number
         self.animal = animal
         self.state = state
     }
+    
+    var description: String {
+        return animal.rawValue + String(format: "%02d", self.number)
+    }
 }
+
