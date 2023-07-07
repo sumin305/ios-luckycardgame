@@ -7,6 +7,7 @@ final class ViewController: UIViewController {
     private let middleView = UIView()
     private let grayView = UIView()
     private let segmentTitles: [String] = ["3명", "4명", "5명"]
+    private var elementArray = [Int](0...4)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,8 +25,8 @@ final class ViewController: UIViewController {
         segmentControl.backgroundColor = .systemGray5
         segmentControl.tintColor = .white
         segmentControl.addTarget(self, action: #selector(segmentControllChanged(segcon:)), for: UIControl.Event.valueChanged)
-        [Int](0...4).forEach{
-            middleView.addSubview(AlphabetView($0))
+        elementArray.forEach{
+            middleView.addSubview(ElementView($0))
         }
         grayView.backgroundColor = .gray
         grayView.layer.cornerRadius = ConstantSize.cornerRadiusDegree
@@ -47,25 +48,28 @@ final class ViewController: UIViewController {
         grayView.frame = CGRect(x: ConstantSize.padding, y: view.safeAreaInsets.top +  ConstantSize.yellowViewHeight + alphabetViewFrameHeight * 5 + 7*ConstantSize.padding, width: subViewWidth, height: grayFrameHeight)
         middleView.frame = CGRect(x: ConstantSize.padding, y: view.safeAreaInsets.top + 2*ConstantSize.padding +  ConstantSize.yellowViewHeight, width: subViewWidth, height: alphabetViewFrameHeight * 5 + 2*ConstantSize.padding)
         for view in middleView.subviews {
-            (view as? AlphabetView)!.reFrame(x: 0, y: 0, width: subViewWidth, height: alphabetViewFrameHeight)
+            (view as? ElementView)!.reFrame(x: 0, y: 0, width: subViewWidth, height: alphabetViewFrameHeight)
         }
     }
     
     @objc func segmentControllChanged(segcon: UISegmentedControl) {
         switch segmentControl.selectedSegmentIndex {
         case 0:
-            LuckyCardManager.shared.participantsCount = 3
+            LuckyCardGameManager.shared.participantsCount = 3
         case 1:
-            LuckyCardManager.shared.participantsCount = 4
+            LuckyCardGameManager.shared.participantsCount = 4
         case 2:
-            LuckyCardManager.shared.participantsCount = 5
+            LuckyCardGameManager.shared.participantsCount = 5
         default: return
         }
+        
+        configurateUI()
+        setFrame()
     }
     
     // 미션2 출력 구현
     private func printAnimalCards() {
-        LuckyCardManager.shared.makeAllShuffledCards()
-        LuckyCardManager.shared.printAllCards()
+        Deck.shared.makeAllShuffledCards()
+        Deck.shared.printAllCards()
     }
 }

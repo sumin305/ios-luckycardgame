@@ -1,6 +1,6 @@
 import UIKit
 
-final class AlphabetView: UIView {
+final class ElementView: UIView {
     
     var alphabet: String
     var target: Int
@@ -11,19 +11,19 @@ final class AlphabetView: UIView {
         super.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         self.backgroundColor = .systemGray5
         self.layer.cornerRadius = 10
-        self.addSubview(makeAlphabet(alphabet))
+        self.addSubview(makeElement(alphabet))
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func makeAlphabet(_ alphabet: String) -> UILabel {
+    private func makeElement(_ alphabet: String) -> UILabel {
         let label = UILabel()
         label.text = alphabet
         label.font = UIFont(name: "AvenirNext-BoldItalic", size: 40)
         label.layer.opacity = 0.5
-        label.frame = CGRect(x: ConstantSize.padding, y: 25, width: 50, height: 50)
+
         label.textColor = .systemGray2
         return label
     }
