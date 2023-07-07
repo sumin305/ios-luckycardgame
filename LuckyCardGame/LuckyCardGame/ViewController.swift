@@ -54,19 +54,18 @@ final class ViewController: UIViewController {
     @objc func segmentControllChanged(segcon: UISegmentedControl) {
         switch segmentControl.selectedSegmentIndex {
         case 0:
-            print(3)
+            LuckyCardManager.shared.participantsCount = 3
         case 1:
-            print(4)
+            LuckyCardManager.shared.participantsCount = 4
         case 2:
-            print(5)
+            LuckyCardManager.shared.participantsCount = 5
         default: return
         }
-    
     }
     
+    // 미션2 출력 구현
     private func printAnimalCards() {
-        var cm = CardManager()
-        cm.makeAllCards()
-        cm.shuffleAndPrintCard()
+        LuckyCardManager.shared.makeAllShuffledCards()
+        LuckyCardManager.shared.printAllCards()
     }
 }

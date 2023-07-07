@@ -18,9 +18,9 @@ final class LuckyCard {
         case back
     }
     
-    private let number: Int
-    private let animal: Animal
-    private var state: CardState
+    let number: Int
+    let animal: Animal
+    var state: CardState
     
     init(number: Int, animal: Animal, state: CardState) {
         self.number = number
