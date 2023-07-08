@@ -5,7 +5,7 @@ import Foundation
  - struct나 class와 같이 인스턴스를 생성하지 않고 값에 접근할 수 있습니다.
  - 또한 LuckyCard.Animal과 같이 카드 내부에 있는 속성임을 알려 데이터간의 포함관계를 나타낼 수 있습니다.
  */
-final class LuckyCard: Comparable {
+final class LuckyCard: Card, Comparable {
     static func == (lhs: LuckyCard, rhs: LuckyCard) -> Bool {
         return lhs.number.rawValue == rhs.number.rawValue
     }
@@ -13,7 +13,6 @@ final class LuckyCard: Comparable {
     static func < (lhs: LuckyCard, rhs: LuckyCard) -> Bool {
         return lhs.number.rawValue < rhs.number.rawValue
     }
-    
     
     enum Animal: String, CaseIterable {
         case 🐶
@@ -65,10 +64,10 @@ final class LuckyCard: Comparable {
     }
 }
 
-extension LuckyCard: Card {
-    
+struct ExceptCard: Card {
+    let number: LuckyCard.Number?
+    let animal: LuckyCard.Animal?
+    let state: LuckyCard.CardState?
 }
 
-protocol Card {
-    var description:  String  { get }
-}
+protocol Card { }

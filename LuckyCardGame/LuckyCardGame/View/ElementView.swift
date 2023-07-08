@@ -2,8 +2,8 @@ import UIKit
 
 final class ElementView: UIView {
     
-    var alphabet: String
-    var target: Int
+    private var alphabet: String
+    private var target: Int
     
     init(_ target: Int) {
         self.target = target

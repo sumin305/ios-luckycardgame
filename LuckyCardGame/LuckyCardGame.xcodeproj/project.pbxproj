@@ -99,11 +99,23 @@
 			path = LuckyCard;
 			sourceTree = "<group>";
 		};
-		EDCBAE722A594D8400338621 /* View */ = {
+		EDCBAE742A59583100338621 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				ED1B0BF22A5542F300D2869F /* ConstantSize.swift */,
+				ED1B0BF02A5542BE00D2869F /* ElementView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		EDCBAE752A59583400338621 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				EDD1C6DD2A53C70500D5CA59 /* SceneDelegate.swift */,
+				EDD1C6DB2A53C70500D5CA59 /* AppDelegate.swift */,
+				EDD1C6DF2A53C70500D5CA59 /* ViewController.swift */,
+			);
+			path = App;
 			sourceTree = "<group>";
 		};
 		EDD1C6CF2A53C70500D5CA59 = {
@@ -129,13 +141,9 @@
 		EDD1C6DA2A53C70500D5CA59 /* LuckyCardGame */ = {
 			isa = PBXGroup;
 			children = (
-				EDCBAE722A594D8400338621 /* View */,
+				EDCBAE752A59583400338621 /* App */,
+				EDCBAE742A59583100338621 /* View */,
 				ED15ABE32A556F1F00B743BF /* LuckyCard */,
-				EDD1C6DB2A53C70500D5CA59 /* AppDelegate.swift */,
-				EDD1C6DD2A53C70500D5CA59 /* SceneDelegate.swift */,
-				EDD1C6DF2A53C70500D5CA59 /* ViewController.swift */,
-				ED1B0BF22A5542F300D2869F /* ConstantSize.swift */,
-				ED1B0BF02A5542BE00D2869F /* ElementView.swift */,
 				EDD1C6E12A53C70500D5CA59 /* Main.storyboard */,
 				EDD1C6E42A53C70500D5CA59 /* Assets.xcassets */,
 				EDD1C6E62A53C70500D5CA59 /* LaunchScreen.storyboard */,

@@ -2,6 +2,7 @@ import UIKit
 
 final class ViewController: UIViewController {
     
+    private var manager = LuckyCardGameManager.shared
     // segmentTitles을 활용하기 위해 lazy var 사용
     private lazy var segmentControl = UISegmentedControl(items: segmentTitles)
     private let middleView = UIView()
@@ -55,21 +56,21 @@ final class ViewController: UIViewController {
     @objc func segmentControllChanged(segcon: UISegmentedControl) {
         switch segmentControl.selectedSegmentIndex {
         case 0:
-            LuckyCardGameManager.shared.participantsCount = 3
+            manager.rule.playerCount = 3
         case 1:
-            LuckyCardGameManager.shared.participantsCount = 4
+            manager.rule.playerCount = 4
         case 2:
-            LuckyCardGameManager.shared.participantsCount = 5
+            manager.rule.playerCount = 5
         default: return
         }
-        
+        print(manager.rule.playerCount, manager.rule.playerCardCount)
         configurateUI()
         setFrame()
     }
     
     // 미션2 출력 구현
     private func printAnimalCards() {
-        LuckyCardDeck.shared.makeAllShuffledCards()
-        LuckyCardDeck.shared.printAllCards()
+        manager.deck.makeAllShuffledCards()
+        manager.deck.printAllCards()
     }
 }
