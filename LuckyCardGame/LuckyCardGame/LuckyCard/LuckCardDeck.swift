@@ -5,9 +5,9 @@ import Foundation
  - struct는 인스턴스를 heap영역이 아닌 stack 영역에 저장된다고 알고 있습니다. 이러한 이유로 class보다 인스턴스를 생성 속도가 매우 빠릅니다.
  - 또한, 상속과 메모리 누수를 막기 위해 struct를 사용하였습니다.
  */
-struct Deck {
-    
-    static var shared = Deck()
+struct LuckyCardDeck: Deck {
+
+    static var shared = LuckyCardDeck()
     var allCardsArray: [LuckyCard] = []
     
     private let cardNumberRange = 1...12
@@ -22,7 +22,14 @@ struct Deck {
         self.allCardsArray.shuffle()
     }
     
+    
+    
     func printAllCards() {
         print(self.allCardsArray.map({ $0.description }).joined(separator: ", "))
     }
+}
+
+protocol Deck {
+    associatedtype Card
+    var allCardsArray: [Card] { get set }
 }

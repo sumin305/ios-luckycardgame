@@ -3,16 +3,19 @@ import Foundation
 struct LuckyCardGameManager {
     
     static var  shared = LuckyCardGameManager()
-    var deck = Deck.shared
-    var participantsArray: [Participant] = []
-    var participantsCount = 3 {
+    var deck = LuckyCardDeck.shared
+    var playerArray: [LuckyCardPlayer] = []
+    var participantsCount : Int {
         willSet(count) {
             gameSetbyParticipantsCount(participantsCount: count)
-
         }
     }
     var participantsCardCount = 0
     var bottomCardCount: Int = 0
+    
+    init() {
+        participantsCount = 3
+    }
     
     private mutating func gameSetbyParticipantsCount(participantsCount: Int) {
         switch participantsCount {
@@ -32,8 +35,8 @@ struct LuckyCardGameManager {
         
         for i in 0..<participantsCount {
             
-            let p = Participant(cardCount: participantsCardCount, owningCards: Array(deck.allCardsArray[i*participantsCardCount...i*participantsCardCount+participantsCardCount-1]))
-            participantsArray.append(p)
+            let p = LuckyCardPlayer(owningCards: Array(deck.allCardsArray[i*participantsCardCount...i*participantsCardCount+participantsCardCount-1]))
+            playerArray.append(p)
         }
     }
 }

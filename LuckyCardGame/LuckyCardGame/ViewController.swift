@@ -69,7 +69,7 @@ final class ViewController: UIViewController {
     
     // 미션2 출력 구현
     private func printAnimalCards() {
-        Deck.shared.makeAllShuffledCards()
-        Deck.shared.printAllCards()
+        LuckyCardDeck.shared.makeAllShuffledCards()
+        LuckyCardDeck.shared.printAllCards()
     }
 }
