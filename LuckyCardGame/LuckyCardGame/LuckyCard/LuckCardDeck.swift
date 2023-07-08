@@ -15,7 +15,7 @@ struct Deck {
     mutating func makeAllShuffledCards() {
         allCardsArray = []
         LuckyCard.Animal.allCases.forEach { animal in
-            for number in cardNumberRange {
+            LuckyCard.Number.allCases.forEach { number in
                 self.allCardsArray.append(LuckyCard(number: number, animal: animal, state: .back))
             }
         }

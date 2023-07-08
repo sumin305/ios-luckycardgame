@@ -19,7 +19,7 @@ struct LuckyCardGameManager {
             case 3:
                 participantsCardCount = 8
                 bottomCardCount = 9
-                deck.allCardsArray = deck.allCardsArray.filter { $0.number != 12 }
+            deck.allCardsArray = deck.allCardsArray.filter({$0.filterNumber(LuckyCard.Number.twelve)})
             case 4:
                 participantsCardCount = 7
                 bottomCardCount = 8

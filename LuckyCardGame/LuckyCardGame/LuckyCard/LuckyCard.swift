@@ -13,23 +13,47 @@ final class LuckyCard {
         case 🐮
     }
     
+    enum Number: Int,CaseIterable {
+        case one = 1
+        case two
+        case three
+        case four
+        case five
+        case six
+        case seven
+        case eight
+        case nine
+        case ten
+        case eleven
+        case twelve
+    }
+    
     enum CardState {
         case front
         case back
     }
     
-    let number: Int
-    let animal: Animal
-    var state: CardState
+    private let number: Number
+    private let animal: Animal
+    private var state: CardState
     
-    init(number: Int, animal: Animal, state: CardState) {
+    init(number: Number, animal: Animal, state: CardState) {
         self.number = number
         self.animal = animal
         self.state = state
     }
     
     var description: String {
-        return animal.rawValue + String(format: "%02d", self.number)
+        return animal.rawValue + String(format: "%02d", self.number.rawValue)
+    }
+    
+    // private를 사용한 프로퍼티 이용
+    func filterNumber(_ number: Number) -> Bool {
+        if self.number == number {
+            return false
+        } else {
+            return true
+        }
     }
 }
 
