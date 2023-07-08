@@ -6,13 +6,6 @@ import Foundation
  - 또한 LuckyCard.Animal과 같이 카드 내부에 있는 속성임을 알려 데이터간의 포함관계를 나타낼 수 있습니다.
  */
 final class LuckyCard: Card, Comparable {
-    static func == (lhs: LuckyCard, rhs: LuckyCard) -> Bool {
-        return lhs.number.rawValue == rhs.number.rawValue
-    }
-    
-    static func < (lhs: LuckyCard, rhs: LuckyCard) -> Bool {
-        return lhs.number.rawValue < rhs.number.rawValue
-    }
     
     enum Animal: String, CaseIterable {
         case 🐶
@@ -54,6 +47,13 @@ final class LuckyCard: Card, Comparable {
         return animal.rawValue + String(format: "%02d", self.number.rawValue)
     }
     
+    static func == (lhs: LuckyCard, rhs: LuckyCard) -> Bool {
+        return lhs.number.rawValue == rhs.number.rawValue
+    }
+    
+    static func < (lhs: LuckyCard, rhs: LuckyCard) -> Bool {
+        return lhs.number.rawValue < rhs.number.rawValue
+    }
     // private를 사용한 프로퍼티 이용
     func filterNumber(_ number: Number) -> Bool {
         if self.number == number {
@@ -62,12 +62,6 @@ final class LuckyCard: Card, Comparable {
             return true
         }
     }
-}
-
-struct ExceptCard: Card {
-    let number: LuckyCard.Number?
-    let animal: LuckyCard.Animal?
-    let state: LuckyCard.CardState?
 }
 
 protocol Card { }

@@ -63,7 +63,11 @@ final class ViewController: UIViewController {
             manager.rule.playerCount = 5
         default: return
         }
-        print(manager.rule.playerCount, manager.rule.playerCardCount)
+        manager.setRule(playerCount: segmentControl.selectedSegmentIndex + 3)
+        manager.playerArray.forEach({ player in
+            print(player.owningCards.map{$0.description})
+        })
+        print(manager.bottom.owningCards.map{$0.description})
         configurateUI()
         setFrame()
     }

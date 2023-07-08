@@ -16,24 +16,28 @@ struct LuckyCardDeck: Deck {
         allCardsArray = []
         LuckyCard.Animal.allCases.forEach { animal in
             LuckyCard.Number.allCases.forEach { number in
-                self.allCardsArray.append(LuckyCard(number: number, animal: animal, state: .back))
+                allCardsArray.append(LuckyCard(number: number, animal: animal, state: .back))
             }
         }
-        self.allCardsArray.shuffle()
+        allCardsArray.shuffle()
     }
     
     func printAllCards() {
-        print(self.allCardsArray.map({ $0.description }).joined(separator: ", "))
+        print(allCardsArray.map({ $0.description }).joined(separator: ", "))
     }
     
     // LuckyCardManager에게서 지시받은 카드 나눠주기
-    mutating func distributedCards(playerArray: inout [LuckyCardPlayer], playerCount: Int, playerCardCount: Int, bottomCardCount: Int, exceptCard: Card?) {
+    mutating func distributedCards(playerArray: inout [LuckyCardPlayer], playerCount: Int, playerCardCount: Int, bottomCardCount: Int, exceptNumber: LuckyCard.Number?, bottom: inout BottomPlayer) {
         playerArray = []
         makeAllShuffledCards()
+        if let number = exceptNumber {
+            allCardsArray = allCardsArray.filter{$0.filterNumber(number)}
+        }
         for startIndex in 0..<playerCount {
             let player = LuckyCardPlayer(owningCards: Array(allCardsArray[startIndex * playerCardCount...startIndex * playerCardCount + playerCardCount - 1]))
             playerArray.append(player)
         }
+        bottom = BottomPlayer(owningCards: Array(allCardsArray[playerCount * playerCardCount...playerCount * playerCardCount + playerCardCount - 1]))
     }
 }
 
@@ -41,4 +45,8 @@ protocol Deck {
     associatedtype Card
     var cardNumberRange: ClosedRange<Int> { get }
     var allCardsArray: [Card] { get set }
+    
+    mutating func makeAllShuffledCards()
+    func printAllCards()
+    mutating func distributedCards(playerArray: inout [LuckyCardPlayer], playerCount: Int, playerCardCount: Int, bottomCardCount: Int, exceptNumber: LuckyCard.Number?, bottom: inout BottomPlayer)
 }
