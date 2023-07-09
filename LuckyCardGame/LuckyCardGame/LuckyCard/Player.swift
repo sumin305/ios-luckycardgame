@@ -26,8 +26,7 @@ final class BottomPlayer: Player {
         owningCards.sort()
     }
 }
-protocol Player
-{
+protocol Player {
     associatedtype Card
     var owningCards: [Card] { get set }
     var cardCount: Int { get }
