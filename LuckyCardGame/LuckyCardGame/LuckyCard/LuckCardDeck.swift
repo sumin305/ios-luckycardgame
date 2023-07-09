@@ -7,7 +7,7 @@ import Foundation
  */
 final class LuckyCardDeck: Deck {
 
-    static var shared = LuckyCardDeck()
+    static let shared = LuckyCardDeck()
     var allCardsArray: [LuckyCard] = []
     
     let cardNumberRange = 1...12
