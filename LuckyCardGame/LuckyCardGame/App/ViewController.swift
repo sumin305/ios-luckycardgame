@@ -8,8 +8,7 @@ final class ViewController: UIViewController {
     private let middleView = UIView()
     private let grayView = UIView()
     private let segmentTitles: [String] = ["3명", "4명", "5명"]
-    private var elementArray = [Int](0...4)
-    
+    private var playerRange = [Int](0...2)
     override func viewDidLoad() {
         super.viewDidLoad()
         configurateUI()
@@ -19,15 +18,15 @@ final class ViewController: UIViewController {
     
     override func viewSafeAreaInsetsDidChange() {
         super.viewSafeAreaInsetsDidChange()
-        setFrame()
+        setFrame(playerCount: manager.rule.playerCount)
     }
     
     private func configurateUI() {
         segmentControl.backgroundColor = .systemGray5
         segmentControl.tintColor = .white
         segmentControl.addTarget(self, action: #selector(segmentControllChanged(segcon:)), for: UIControl.Event.valueChanged)
-        elementArray.forEach{
-            middleView.addSubview(ElementView($0))
+        playerRange.forEach { player in
+            middleView.addSubview(ElementView(player, 0))
         }
         grayView.backgroundColor = .gray
         grayView.layer.cornerRadius = ConstantSize.cornerRadiusDegree
@@ -39,37 +38,55 @@ final class ViewController: UIViewController {
         view.addSubview(grayView)
     }
     
-    private func setFrame() {
+    private func setFrame(playerCount: Int) {
+      
         let nonSafeArea = ConstantSize.totalHeight - (view.safeAreaInsets.top) - (view.safeAreaInsets.bottom)
         let alphabetViewFrameHeight = (nonSafeArea - 3*ConstantSize.padding - ConstantSize.yellowViewHeight) / CGFloat(7)
         let grayFrameHeight = nonSafeArea - 9*ConstantSize.padding -  ConstantSize.yellowViewHeight - alphabetViewFrameHeight*5
-        let subViewWidth = ConstantSize.totalWidth - 2*ConstantSize.padding
+
+        segmentControl.frame = CGRect(x: ConstantSize.padding, y:  view.safeAreaInsets.top + ConstantSize.padding , width: ConstantSize.subViewWidth , height:  ConstantSize.yellowViewHeight)
+        grayView.frame = CGRect(x: ConstantSize.padding, y: view.safeAreaInsets.top +  ConstantSize.yellowViewHeight + alphabetViewFrameHeight * 4 + 6*ConstantSize.padding, width: ConstantSize.subViewWidth, height: 2*(nonSafeArea - 9*ConstantSize.padding -  ConstantSize.yellowViewHeight - alphabetViewFrameHeight*5))
         
-        segmentControl.frame = CGRect(x: ConstantSize.padding, y:  view.safeAreaInsets.top + ConstantSize.padding , width: subViewWidth , height:  ConstantSize.yellowViewHeight)
-        grayView.frame = CGRect(x: ConstantSize.padding, y: view.safeAreaInsets.top +  ConstantSize.yellowViewHeight + alphabetViewFrameHeight * 5 + 7*ConstantSize.padding, width: subViewWidth, height: grayFrameHeight)
-        middleView.frame = CGRect(x: ConstantSize.padding, y: view.safeAreaInsets.top + 2*ConstantSize.padding +  ConstantSize.yellowViewHeight, width: subViewWidth, height: alphabetViewFrameHeight * 5 + 2*ConstantSize.padding)
+        middleView.frame = CGRect(x: ConstantSize.padding, y: view.safeAreaInsets.top + 2*ConstantSize.padding +  ConstantSize.yellowViewHeight, width: ConstantSize.subViewWidth, height: alphabetViewFrameHeight * 5 + 2*ConstantSize.padding)
+        
         for view in middleView.subviews {
-            (view as? ElementView)!.reFrame(x: 0, y: 0, width: subViewWidth, height: alphabetViewFrameHeight)
+            (view as? ElementView)!.reFrame(x: 0, y: 0, width: ConstantSize.subViewWidth, height: alphabetViewFrameHeight)
+        }
+        
+        if playerCount == 5 {
+            grayView.frame = CGRect(x: ConstantSize.padding, y: view.safeAreaInsets.top +  ConstantSize.yellowViewHeight + alphabetViewFrameHeight * 5 + 7*ConstantSize.padding, width: ConstantSize.subViewWidth, height: grayFrameHeight)
         }
     }
     
+    private func removeMiddleView() {
+        middleView.subviews.forEach({$0.removeFromSuperview()})
+    }
+    
+    private func setViewBySegmentController(playerCount: Int) {
+        removeMiddleView()
+        [Int](0...playerCount-1).forEach { playerIndex in
+            middleView.addSubview(ElementView(playerCount, playerIndex))
+        }
+        setFrame(playerCount: playerCount)
+
+    }
     @objc func segmentControllChanged(segcon: UISegmentedControl) {
-        switch segmentControl.selectedSegmentIndex {
+        let index = segmentControl.selectedSegmentIndex
+        let playerCount = index + 3
+        switch index {
         case 0:
-            manager.rule.playerCount = 3
+            manager.rule.playerCount = playerCount
         case 1:
-            manager.rule.playerCount = 4
+            manager.rule.playerCount = playerCount
         case 2:
-            manager.rule.playerCount = 5
+            manager.rule.playerCount = playerCount
         default: return
         }
-        manager.setRule(playerCount: segmentControl.selectedSegmentIndex + 3)
+        manager.setRule(playerCount: playerCount)
         manager.playerArray.forEach({ player in
             print(player.owningCards.map{$0.description})
         })
-        print(manager.bottom.owningCards.map{$0.description})
-        configurateUI()
-        setFrame()
+        setViewBySegmentController(playerCount: playerCount)
     }
     
     // 미션2 출력 구현

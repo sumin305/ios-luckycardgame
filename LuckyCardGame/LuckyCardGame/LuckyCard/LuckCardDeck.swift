@@ -5,14 +5,16 @@ import Foundation
  - struct는 인스턴스를 heap영역이 아닌 stack 영역에 저장된다고 알고 있습니다. 이러한 이유로 class보다 인스턴스를 생성 속도가 매우 빠릅니다.
  - 또한, 상속과 메모리 누수를 막기 위해 struct를 사용하였습니다.
  */
-struct LuckyCardDeck: Deck {
+final class LuckyCardDeck: Deck {
 
     static var shared = LuckyCardDeck()
     var allCardsArray: [LuckyCard] = []
     
     let cardNumberRange = 1...12
     
-    mutating func makeAllShuffledCards() {
+    private init() { }
+    
+    func makeAllShuffledCards() {
         allCardsArray = []
         LuckyCard.Animal.allCases.forEach { animal in
             LuckyCard.Number.allCases.forEach { number in
@@ -27,7 +29,7 @@ struct LuckyCardDeck: Deck {
     }
     
     // LuckyCardManager에게서 지시받은 카드 나눠주기
-    mutating func distributedCards(playerArray: inout [LuckyCardPlayer], playerCount: Int, playerCardCount: Int, bottomCardCount: Int, exceptNumber: LuckyCard.Number?, bottom: inout BottomPlayer) {
+    func distributedCards(playerArray: inout [LuckyCardPlayer], playerCount: Int, playerCardCount: Int, bottomCardCount: Int, exceptNumber: LuckyCard.Number?, bottom: inout BottomPlayer) {
         playerArray = []
         makeAllShuffledCards()
         if let number = exceptNumber {
@@ -46,7 +48,7 @@ protocol Deck {
     var cardNumberRange: ClosedRange<Int> { get }
     var allCardsArray: [Card] { get set }
     
-    mutating func makeAllShuffledCards()
+    func makeAllShuffledCards()
     func printAllCards()
-    mutating func distributedCards(playerArray: inout [LuckyCardPlayer], playerCount: Int, playerCardCount: Int, bottomCardCount: Int, exceptNumber: LuckyCard.Number?, bottom: inout BottomPlayer)
+    func distributedCards(playerArray: inout [LuckyCardPlayer], playerCount: Int, playerCardCount: Int, bottomCardCount: Int, exceptNumber: LuckyCard.Number?, bottom: inout BottomPlayer)
 }

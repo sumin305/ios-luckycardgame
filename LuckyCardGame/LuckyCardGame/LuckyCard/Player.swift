@@ -1,22 +1,28 @@
 import Foundation
 
-struct LuckyCardPlayer: Player {
+final class LuckyCardPlayer: Player {
     var owningCards: [LuckyCard] = []
     var cardCount: Int {
         return owningCards.count
     }
-    mutating func sortOwningCards() {
+    init(owningCards: [LuckyCard]) {
+        self.owningCards = owningCards
+    }
+    func sortOwningCards() {
         owningCards.sort()
     }
 }
 
-struct BottomPlayer: Player {
-    static let shared = BottomPlayer()
+final class BottomPlayer: Player {
+    static let shared = BottomPlayer(owningCards: [])
     var owningCards: [LuckyCard] = []
     var cardCount: Int {
         return owningCards.count
     }
-    mutating func sortOwningCards() {
+    init(owningCards: [LuckyCard]) {
+        self.owningCards = owningCards
+    }
+    func sortOwningCards() {
         owningCards.sort()
     }
 }
@@ -25,6 +31,6 @@ protocol Player
     associatedtype Card
     var owningCards: [Card] { get set }
     var cardCount: Int { get }
-    mutating func sortOwningCards()
+    func sortOwningCards()
 }
 

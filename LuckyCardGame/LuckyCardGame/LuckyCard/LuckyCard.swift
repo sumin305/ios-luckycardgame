@@ -33,8 +33,8 @@ final class LuckyCard: Card, Comparable {
         case back
     }
     
-    private let number: Number
-    private let animal: Animal
+    private(set) var number: Number
+    private(set) var animal: Animal
     private var state: CardState
     
     init(number: Number, animal: Animal, state: CardState) {
@@ -60,6 +60,14 @@ final class LuckyCard: Card, Comparable {
             return false
         } else {
             return true
+        }
+    }
+    
+    func reverseCard() {
+        if state == .back {
+            state = .front
+        } else {
+            state = .back
         }
     }
 }
