@@ -21,6 +21,7 @@ final class LuckyCardGameManager {
     var bottom = BottomPlayer.shared
 
     private init() { }
+    
     func setRule(playerCount: Int) {
         switch playerCount {
         case 3:

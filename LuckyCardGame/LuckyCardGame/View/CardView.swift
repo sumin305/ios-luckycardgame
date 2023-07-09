@@ -2,6 +2,7 @@ import Foundation
 import UIKit
 
 final class CardView: UIView {
+    
     let card: LuckyCard
     
     enum Size {
@@ -12,27 +13,51 @@ final class CardView: UIView {
         static let fontSize: CGFloat = 15
     }
     
-    init(card: LuckyCard, index: Int, cardCount: Int) {
+    init(card: LuckyCard, index: Int, cardCount: Int, isPlayer: Bool) {
         self.card = card
         super.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-        setFrame(index: index, cardCount: cardCount)
         switch card.state {
-        case .front: makeFrontCardView()
-        case .back: makeBackCardView()
+            case .front: makeFrontCardView()
+            case .back: makeBackCardView()
         }
+        setFrame(index: index, cardCount: cardCount, isPlayer: isPlayer)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setFrame(index: Int, cardCount: Int) {
-        let interval = (ConstantSize.subViewWidth - 2*Size.cardPadding - CGFloat(cardCount)*Size.cardWidth)/CGFloat(cardCount-1)
-        frame =  CGRect(x: Size.cardPadding + CGFloat(index) * (Size.cardWidth + interval), y: Size.cardPadding, width: Size.cardWidth, height: Size.cardHeight)
+    private func setDefaultFrame() {
         backgroundColor = .white
         layer.cornerRadius = ConstantSize.cornerRadiusDegree
         layer.borderWidth = Size.borderWidth
         layer.borderColor = UIColor.black.cgColor
+    }
+    private func setFrame(index: Int, cardCount: Int, isPlayer: Bool) {
+        
+        setDefaultFrame()
+        
+        if isPlayer {
+            let interval = (ConstantSize.subViewWidth - 2*Size.cardPadding - CGFloat(cardCount)*Size.cardWidth)/CGFloat(cardCount-1)
+            frame =  CGRect(x: Size.cardPadding + CGFloat(index) * (Size.cardWidth + interval), y: Size.cardPadding, width: Size.cardWidth, height: Size.cardHeight)
+        } else {
+            switch cardCount {
+            case 9:
+                let widthInterval = (ConstantSize.subViewWidth - 5*Size.cardWidth) / 6
+                let heightInterval = (ConstantSize.longGrayFrameHeight - 2*Size.cardHeight) / 3
+                let xIndex = index < 5 ? index : index - 5
+                frame = CGRect(x: widthInterval + (widthInterval + Size.cardWidth) * CGFloat(xIndex), y: index < 5 ? heightInterval : heightInterval*2 + Size.cardHeight, width: Size.cardWidth, height: Size.cardHeight)
+            case 8:
+                let widthInterval = (ConstantSize.subViewWidth - 4*Size.cardWidth) / 5
+                let heightInterval = (ConstantSize.longGrayFrameHeight - 2*Size.cardHeight) / 3
+                let xIndex = index < 4 ? index : index - 4
+                frame = CGRect(x: widthInterval + (widthInterval + Size.cardWidth) * CGFloat(xIndex), y: index < 4 ? heightInterval : heightInterval*2 + Size.cardHeight, width: Size.cardWidth, height: Size.cardHeight)
+            case 6:
+                let interval = (ConstantSize.subViewWidth - 2*Size.cardPadding - CGFloat(cardCount)*Size.cardWidth)/CGFloat(cardCount-1)
+                frame = CGRect(x: Size.cardPadding + CGFloat(index) * (Size.cardWidth + interval), y: (ConstantSize.grayFrameHeight - Size.cardHeight)/2, width: Size.cardWidth, height: Size.cardHeight)
+            default: return
+            }
+        }
     }
     
     private func makeFrontCardView()  {
@@ -67,7 +92,7 @@ final class CardView: UIView {
         let backLabel: UIImageView = {
             let label = UIImageView()
             label.image = UIImage(named: "clover")
-            label.frame =  CGRect(x: self.bounds.width/2-15, y: self.bounds.height/2-15 , width: 30, height: 30)
+            label.frame =  CGRect(x: Size.cardWidth/2-Size.fontSize, y: Size.cardHeight/2-Size.fontSize , width: Size.fontSize*2, height: Size.fontSize*2)
             return label
         }()
         self.addSubview(backLabel)

@@ -26,7 +26,7 @@ final class ViewController: UIViewController {
         segmentControl.tintColor = .white
         segmentControl.addTarget(self, action: #selector(segmentControllChanged(segcon:)), for: UIControl.Event.valueChanged)
         playerRange.forEach { player in
-            middleView.addSubview(ElementView(3, player))
+            middleView.addSubview(ElementView(5, player))
         }
         grayView.backgroundColor = .gray
         grayView.layer.cornerRadius = ConstantSize.cornerRadiusDegree
@@ -39,7 +39,6 @@ final class ViewController: UIViewController {
     }
     
     private func setFrame(playerCount: Int) {
-      
        
         ConstantSize.topSafeArea = view.safeAreaInsets.top
         ConstantSize.bottomSafeArea = view.safeAreaInsets.bottom
@@ -62,14 +61,18 @@ final class ViewController: UIViewController {
         }
     }
     
-    private func removeMiddleView() {
+    private func removeSubView() {
         middleView.subviews.forEach({$0.removeFromSuperview()})
+        grayView.subviews.forEach({$0.removeFromSuperview()})
     }
     
     private func setViewBySegmentController(playerCount: Int) {
-        removeMiddleView()
-        [Int](0...playerCount-1).forEach { playerIndex in
-            middleView.addSubview(ElementView(playerCount, playerIndex))
+        removeSubView()
+        for i in 0...playerCount-1 {
+            middleView.addSubview(ElementView(playerCount, i))
+        }
+        for j in 0..<manager.bottom.owningCards.count {
+            grayView.addSubview(CardView(card: manager.bottom.owningCards[j], index: j, cardCount: manager.bottom.owningCards.count, isPlayer: false))
         }
         setFrame(playerCount: playerCount)
     }
@@ -87,9 +90,6 @@ final class ViewController: UIViewController {
         default: return
         }
         manager.setRule(playerCount: playerCount)
-        manager.playerArray.forEach({ player in
-            print(player.owningCards.map{$0.description})
-        })
         setViewBySegmentController(playerCount: playerCount)
     }
     

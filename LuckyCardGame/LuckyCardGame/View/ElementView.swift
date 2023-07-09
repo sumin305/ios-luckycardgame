@@ -14,24 +14,24 @@ final class ElementView: UIView {
         layer.cornerRadius = 10
         tag = 2
         self.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
-        makeElement()
+        makeCardView()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
  
     func reFrame(x: CGFloat, y: CGFloat, width: CGFloat, height: CGFloat) {
         self.frame = CGRect(x: x, y: y + CGFloat(playerIndex)*(ConstantSize.padding + height) , width: width, height:  height)
     }
-    private func makeElement() {
+    
+    private func makeCardView() {
              let player = manager.playerArray[playerIndex]
              if playerIndex == 0 {
                  player.owningCards.forEach({$0.reverseCard()})
              }
              for j in 0..<player.owningCards.count {
-                 self.addSubview(CardView(card: player.owningCards[j], index: j, cardCount: player.owningCards.count))
+                 self.addSubview(CardView(card: player.owningCards[j], index: j, cardCount: player.owningCards.count, isPlayer: true))
          }
      }
 }

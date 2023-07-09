@@ -39,7 +39,7 @@ final class LuckyCardDeck: Deck {
             let player = LuckyCardPlayer(owningCards: Array(allCardsArray[startIndex * playerCardCount...startIndex * playerCardCount + playerCardCount - 1]))
             playerArray.append(player)
         }
-        bottom = BottomPlayer(owningCards: Array(allCardsArray[playerCount * playerCardCount...playerCount * playerCardCount + playerCardCount - 1]))
+        bottom = BottomPlayer(owningCards: Array(allCardsArray[playerCount * playerCardCount...allCardsArray.count-1]))
     }
 }
 
