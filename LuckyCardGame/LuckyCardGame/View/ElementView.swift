@@ -10,10 +10,7 @@ final class ElementView: UIView {
         playerCount = count
         playerIndex = index
         super.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-        backgroundColor = .systemGray5
-        layer.cornerRadius = 10
-        tag = 2
-        self.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
+        configurateUI()
         makeCardView()
     }
     
@@ -25,6 +22,10 @@ final class ElementView: UIView {
         self.frame = CGRect(x: x, y: y + CGFloat(playerIndex)*(ConstantSize.padding + height) , width: width, height:  height)
     }
     
+    private func configurateUI() {
+        backgroundColor = .systemGray5
+        layer.cornerRadius = 10
+    }
     private func makeCardView() {
              let player = manager.playerArray[playerIndex]
              if playerIndex == 0 {

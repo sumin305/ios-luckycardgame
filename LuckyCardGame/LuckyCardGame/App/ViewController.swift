@@ -55,7 +55,7 @@ final class ViewController: UIViewController {
         for view in middleView.subviews {
             (view as? ElementView)!.reFrame(x: 0, y: 0, width: ConstantSize.subViewWidth, height: elementViewFrameHeight)
         }
-        
+
         if playerCount == 5 {
             grayView.frame = CGRect(x: ConstantSize.padding, y: view.safeAreaInsets.top +  ConstantSize.yellowViewHeight + elementViewFrameHeight * 5 + 7*ConstantSize.padding, width: ConstantSize.subViewWidth, height: grayFrameHeight)
         }
