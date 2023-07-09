@@ -40,21 +40,25 @@ final class ViewController: UIViewController {
     
     private func setFrame(playerCount: Int) {
       
-        let nonSafeArea = ConstantSize.totalHeight - (view.safeAreaInsets.top) - (view.safeAreaInsets.bottom)
-        let alphabetViewFrameHeight = (nonSafeArea - 3*ConstantSize.padding - ConstantSize.yellowViewHeight) / CGFloat(7)
-        let grayFrameHeight = nonSafeArea - 9*ConstantSize.padding -  ConstantSize.yellowViewHeight - alphabetViewFrameHeight*5
-
-        segmentControl.frame = CGRect(x: ConstantSize.padding, y:  view.safeAreaInsets.top + ConstantSize.padding , width: ConstantSize.subViewWidth , height:  ConstantSize.yellowViewHeight)
-        grayView.frame = CGRect(x: ConstantSize.padding, y: view.safeAreaInsets.top +  ConstantSize.yellowViewHeight + alphabetViewFrameHeight * 4 + 6*ConstantSize.padding, width: ConstantSize.subViewWidth, height: 2*(nonSafeArea - 9*ConstantSize.padding -  ConstantSize.yellowViewHeight - alphabetViewFrameHeight*5))
+       
+        ConstantSize.topSafeArea = view.safeAreaInsets.top
+        ConstantSize.bottomSafeArea = view.safeAreaInsets.bottom
+        ConstantSize.nonSafeArea = ConstantSize.totalHeight - ConstantSize.topSafeArea - ConstantSize.bottomSafeArea
         
-        middleView.frame = CGRect(x: ConstantSize.padding, y: view.safeAreaInsets.top + 2*ConstantSize.padding +  ConstantSize.yellowViewHeight, width: ConstantSize.subViewWidth, height: alphabetViewFrameHeight * 5 + 2*ConstantSize.padding)
+        let elementViewFrameHeight = ConstantSize.elementViewFrameHeight
+        let grayFrameHeight = ConstantSize.grayFrameHeight
+        
+        segmentControl.frame = CGRect(x: ConstantSize.padding, y:  view.safeAreaInsets.top + ConstantSize.padding , width: ConstantSize.subViewWidth , height:  ConstantSize.yellowViewHeight)
+        grayView.frame = CGRect(x: ConstantSize.padding, y: view.safeAreaInsets.top + ConstantSize.yellowViewHeight + elementViewFrameHeight * 4 + 6*ConstantSize.padding, width: ConstantSize.subViewWidth, height: 2*(ConstantSize.nonSafeArea - 9*ConstantSize.padding -  ConstantSize.yellowViewHeight - elementViewFrameHeight*5))
+        
+        middleView.frame = CGRect(x: ConstantSize.padding, y: view.safeAreaInsets.top + 2*ConstantSize.padding +  ConstantSize.yellowViewHeight, width: ConstantSize.subViewWidth, height: elementViewFrameHeight * 5 + 2*ConstantSize.padding)
         
         for view in middleView.subviews {
-            (view as? ElementView)!.reFrame(x: 0, y: 0, width: ConstantSize.subViewWidth, height: alphabetViewFrameHeight)
+            (view as? ElementView)!.reFrame(x: 0, y: 0, width: ConstantSize.subViewWidth, height: elementViewFrameHeight)
         }
         
         if playerCount == 5 {
-            grayView.frame = CGRect(x: ConstantSize.padding, y: view.safeAreaInsets.top +  ConstantSize.yellowViewHeight + alphabetViewFrameHeight * 5 + 7*ConstantSize.padding, width: ConstantSize.subViewWidth, height: grayFrameHeight)
+            grayView.frame = CGRect(x: ConstantSize.padding, y: view.safeAreaInsets.top +  ConstantSize.yellowViewHeight + elementViewFrameHeight * 5 + 7*ConstantSize.padding, width: ConstantSize.subViewWidth, height: grayFrameHeight)
         }
     }
     
@@ -68,8 +72,8 @@ final class ViewController: UIViewController {
             middleView.addSubview(ElementView(playerCount, playerIndex))
         }
         setFrame(playerCount: playerCount)
-
     }
+    
     @objc func segmentControllChanged(segcon: UISegmentedControl) {
         let index = segmentControl.selectedSegmentIndex
         let playerCount = index + 3

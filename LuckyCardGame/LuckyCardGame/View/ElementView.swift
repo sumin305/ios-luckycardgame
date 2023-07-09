@@ -21,17 +21,18 @@ final class ElementView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func makeElement() {
-            let player = manager.playerArray[playerIndex]
-            if playerIndex == 0 {
-                player.owningCards.forEach({$0.reverseCard()})
-            }
-            for j in 0..<player.owningCards.count {
-                self.addSubview(CardView(card: player.owningCards[j], index: j, cardCount: player.owningCards.count))
-        }
-    }
-    
+ 
     func reFrame(x: CGFloat, y: CGFloat, width: CGFloat, height: CGFloat) {
         self.frame = CGRect(x: x, y: y + CGFloat(playerIndex)*(ConstantSize.padding + height) , width: width, height:  height)
     }
+    private func makeElement() {
+             let player = manager.playerArray[playerIndex]
+             if playerIndex == 0 {
+                 player.owningCards.forEach({$0.reverseCard()})
+             }
+             for j in 0..<player.owningCards.count {
+                 self.addSubview(CardView(card: player.owningCards[j], index: j, cardCount: player.owningCards.count))
+         }
+     }
 }
+
