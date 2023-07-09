@@ -27,7 +27,7 @@ final class ElementView: UIView {
                 player.owningCards.forEach({$0.reverseCard()})
             }
             for j in 0..<player.owningCards.count {
-                self.addSubview(CardView(card: player.owningCards[j], index: j))
+                self.addSubview(CardView(card: player.owningCards[j], index: j, cardCount: player.owningCards.count))
         }
     }
     

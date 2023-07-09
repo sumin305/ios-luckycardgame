@@ -288,7 +288,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "7"
             endingLineNumber = "7"
-            landmarkName = "init(card:index:)"
+            landmarkName = "init(card:index:cardCount:)"
             landmarkType = "7">
             <Locations>
                <Location
@@ -398,6 +398,69 @@
                   startingLineNumber = "4"
                   endingLineNumber = "4"
                   offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "41D5BFBF-EF2C-4D6F-8444-3D851879D41D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LuckyCardGame/View/CardView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "makeFrontCardView()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "41D5BFBF-EF2C-4D6F-8444-3D851879D41D - f28ff1474602f8da"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; __C.UILabel in LuckyCardGame.CardView.makeNumberView(index: Swift.Int) -&gt; ()"
+                  moduleName = "LuckyCardGame"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/soom/ios-luckycardgame/LuckyCardGame/LuckyCardGame/View/CardView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "80">
+               </Location>
+               <Location
+                  uuid = "41D5BFBF-EF2C-4D6F-8444-3D851879D41D - 6b894d203571c949"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LuckyCardGame.CardView.makeNumberView(index: Swift.Int) -&gt; ()"
+                  moduleName = "LuckyCardGame"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/soom/ios-luckycardgame/LuckyCardGame/LuckyCardGame/View/CardView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "52">
+               </Location>
+               <Location
+                  uuid = "41D5BFBF-EF2C-4D6F-8444-3D851879D41D - f28ff1474602f8b9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; __C.UILabel in LuckyCardGame.CardView.makeNumberView(index: Swift.Int) -&gt; ()"
+                  moduleName = "LuckyCardGame"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/soom/ios-luckycardgame/LuckyCardGame/LuckyCardGame/View/CardView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "48">
                </Location>
             </Locations>
          </BreakpointContent>

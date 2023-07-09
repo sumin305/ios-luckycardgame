@@ -35,7 +35,7 @@ final class LuckyCard: Card, Comparable {
     
     private(set) var number: Number
     private(set) var animal: Animal
-    private var state: CardState
+    private(set) var state: CardState
     
     init(number: Number, animal: Animal, state: CardState) {
         self.number = number

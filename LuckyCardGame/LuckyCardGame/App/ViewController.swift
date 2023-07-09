@@ -26,7 +26,7 @@ final class ViewController: UIViewController {
         segmentControl.tintColor = .white
         segmentControl.addTarget(self, action: #selector(segmentControllChanged(segcon:)), for: UIControl.Event.valueChanged)
         playerRange.forEach { player in
-            middleView.addSubview(ElementView(player, 0))
+            middleView.addSubview(ElementView(3, player))
         }
         grayView.backgroundColor = .gray
         grayView.layer.cornerRadius = ConstantSize.cornerRadiusDegree
