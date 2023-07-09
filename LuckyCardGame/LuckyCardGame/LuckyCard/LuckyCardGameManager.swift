@@ -35,6 +35,20 @@ struct LuckyCardGameManager {
     var playerArray: [LuckyCardPlayer] = []
     
     private mutating func gameSetbyParticipantsCount(participantsCount: Int) {
+        switch participantsCount {
+            case 3:
+                participantsCardCount = 8
+                bottomCardCount = 9
+            deck.allCardsArray = deck.allCardsArray.filter({$0.filterNumber(LuckyCard.Number.twelve)})
+            case 4:
+                participantsCardCount = 7
+                bottomCardCount = 8
+                deck.makeAllShuffledCards()
+            default:
+                participantsCardCount = 6
+                bottomCardCount = 6
+                deck.makeAllShuffledCards()
+        }
         
         for i in 0..<participantsCount {
             let p = LuckyCardPlayer(owningCards: Array(deck.allCardsArray[i*rule.playerCardCount...i*rule.playerCardCount+rule.playerCardCount-1]))
