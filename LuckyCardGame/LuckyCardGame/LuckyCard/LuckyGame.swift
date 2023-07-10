@@ -1,7 +1,7 @@
 import Foundation
 
 // 게임당 하나만 갖는 game manager
-final class LuckyCardGameManager {
+final class LuckyGame {
     
     // manager당 하나만 갖는 카드 분배 룰
     final class CardRule {
@@ -14,13 +14,16 @@ final class LuckyCardGameManager {
         private init() { }
     }
     
-    static let shared = LuckyCardGameManager()
+    
+    static let shared = LuckyGame()
     var rule = CardRule.shared
     var deck = LuckyCardDeck.shared
     var playerArray: [LuckyCardPlayer] = Array(repeating: LuckyCardPlayer(owningCards: []), count: 3)
     var bottom = BottomPlayer.shared
 
-    private init() { }
+    init() {
+        playerArray = Array(repeating: LuckyCardPlayer(owningCards: []), count: rule.playerCount)
+    }
     
     func setRule(playerCount: Int) {
         switch playerCount {

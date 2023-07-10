@@ -2,7 +2,7 @@ import UIKit
 
 final class ViewController: UIViewController {
     
-    private var manager = LuckyCardGameManager.shared
+    private var game = LuckyGame.shared
     // segmentTitles을 활용하기 위해 lazy var 사용
     private lazy var segmentControl = UISegmentedControl(items: segmentTitles)
     private let middleView = UIView()
@@ -18,7 +18,7 @@ final class ViewController: UIViewController {
     
     override func viewSafeAreaInsetsDidChange() {
         super.viewSafeAreaInsetsDidChange()
-        setFrame(playerCount: manager.rule.playerCount)
+        setFrame(playerCount: game.rule.playerCount)
     }
     
     private func configurateUI() {
@@ -71,8 +71,8 @@ final class ViewController: UIViewController {
         for i in 0...playerCount-1 {
             middleView.addSubview(ElementView(playerCount, i))
         }
-        for j in 0..<manager.bottom.owningCards.count {
-            grayView.addSubview(CardView(card: manager.bottom.owningCards[j], index: j, cardCount: manager.bottom.owningCards.count, isPlayer: false))
+        for j in 0..<game.bottom.owningCards.count {
+            grayView.addSubview(CardView(card: game.bottom.owningCards[j], index: j, cardCount: game.bottom.owningCards.count, isPlayer: false))
         }
         setFrame(playerCount: playerCount)
     }
@@ -82,20 +82,20 @@ final class ViewController: UIViewController {
         let playerCount = index + 3
         switch index {
         case 0:
-            manager.rule.playerCount = playerCount
+            game.rule.playerCount = playerCount
         case 1:
-            manager.rule.playerCount = playerCount
+            game.rule.playerCount = playerCount
         case 2:
-            manager.rule.playerCount = playerCount
+            game.rule.playerCount = playerCount
         default: return
         }
-        manager.setRule(playerCount: playerCount)
+        game.setRule(playerCount: playerCount)
         setViewBySegmentController(playerCount: playerCount)
     }
     
     // 미션2 출력 구현
     private func printAnimalCards() {
-        manager.deck.makeAllShuffledCards()
-        manager.deck.printAllCards()
+        game.deck.makeAllShuffledCards()
+        game.deck.printAllCards()
     }
 }

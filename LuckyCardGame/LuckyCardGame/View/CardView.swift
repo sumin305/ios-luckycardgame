@@ -33,6 +33,7 @@ final class CardView: UIView {
         layer.borderWidth = Size.borderWidth
         layer.borderColor = UIColor.black.cgColor
     }
+    
     private func setFrame(index: Int, cardCount: Int, isPlayer: Bool) {
         
         setDefaultFrame()

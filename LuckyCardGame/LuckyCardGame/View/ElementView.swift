@@ -4,7 +4,7 @@ final class ElementView: UIView {
     
     private var playerCount: Int = 3
     private var playerIndex: Int = 0
-    private var manager = LuckyCardGameManager.shared
+    private var game = LuckyGame.shared
     
     init(_ count: Int, _ index: Int) {
         playerCount = count
@@ -27,7 +27,7 @@ final class ElementView: UIView {
         layer.cornerRadius = 10
     }
     private func makeCardView() {
-             let player = manager.playerArray[playerIndex]
+             let player = game.playerArray[playerIndex]
              if playerIndex == 0 {
                  player.owningCards.forEach({$0.reverseCard()})
              }
