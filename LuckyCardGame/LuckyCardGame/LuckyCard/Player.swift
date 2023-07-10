@@ -14,7 +14,6 @@ final class LuckyCardPlayer: Player {
 }
 
 final class BottomPlayer: Player {
-    static let shared = BottomPlayer(owningCards: [])
     var owningCards: [LuckyCard] = []
     var cardCount: Int {
         return owningCards.count

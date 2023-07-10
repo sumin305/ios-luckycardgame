@@ -2,13 +2,15 @@ import UIKit
 
 final class ViewController: UIViewController {
     
-    private var game = LuckyGame.shared
+    private let game = LuckyGame.shared
+    
     // segmentTitles을 활용하기 위해 lazy var 사용
     private lazy var segmentControl = UISegmentedControl(items: segmentTitles)
     private let middleView = UIView()
     private let grayView = UIView()
     private let segmentTitles: [String] = ["3명", "4명", "5명"]
     private var playerRange = [Int](0...2)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configurateUI()

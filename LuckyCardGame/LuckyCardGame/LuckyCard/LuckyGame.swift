@@ -4,26 +4,19 @@ import Foundation
 final class LuckyGame {
     
     // manager당 하나만 갖는 카드 분배 룰
-    final class CardRule {
-        static let shared = CardRule()
+    struct CardRule {
         var playerCount: Int = 3
         var playerCardCount: Int = 8
         var bottomCardCount: Int = 9
         var exceptNumber: LuckyCard.Number? = .twelve
-        
-        private init() { }
     }
     
-    
+    private init() { }
     static let shared = LuckyGame()
-    var rule = CardRule.shared
-    var deck = LuckyCardDeck.shared
+    var rule = CardRule()
+    var deck = LuckyCardDeck()
     var playerArray: [LuckyCardPlayer] = Array(repeating: LuckyCardPlayer(owningCards: []), count: 3)
-    var bottom = BottomPlayer.shared
-
-    init() {
-        playerArray = Array(repeating: LuckyCardPlayer(owningCards: []), count: rule.playerCount)
-    }
+    var bottom = BottomPlayer(owningCards: [])
     
     func setRule(playerCount: Int) {
         switch playerCount {
@@ -44,6 +37,6 @@ final class LuckyGame {
     }
     // Deck에서 카드 분배하도록 지시
     func makeDeckDistribute() {
-        deck.distributedCards(playerArray: &playerArray, playerCount: rule.playerCount, playerCardCount: rule.playerCardCount, bottomCardCount: rule.bottomCardCount, exceptNumber: rule.exceptNumber, bottom: &bottom)
+        deck.distributedCards(rule: rule)
     }
 }

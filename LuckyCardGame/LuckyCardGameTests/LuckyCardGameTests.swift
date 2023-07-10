@@ -7,7 +7,7 @@ final class LuckyCardGameTests: XCTestCase {
     
     override func setUpWithError() throws {
         try super.setUpWithError()
-        game = LuckyGame()
+        //game = LuckyGame()
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
 

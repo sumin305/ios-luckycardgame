@@ -7,12 +7,8 @@ import Foundation
  */
 final class LuckyCardDeck: Deck {
 
-    static let shared = LuckyCardDeck()
     var allCardsArray: [LuckyCard] = []
-    
     let cardNumberRange = 1...12
-    
-    private init() { }
     
     func makeAllShuffledCards() {
         allCardsArray = []
@@ -29,17 +25,17 @@ final class LuckyCardDeck: Deck {
     }
     
     // LuckyCardManager에게서 지시받은 카드 나눠주기
-    func distributedCards(playerArray: inout [LuckyCardPlayer], playerCount: Int, playerCardCount: Int, bottomCardCount: Int, exceptNumber: LuckyCard.Number?, bottom: inout BottomPlayer) {
-        playerArray = []
+    func distributedCards(rule: LuckyGame.CardRule) {
+        LuckyGame.shared.playerArray = []
         makeAllShuffledCards()
-        if let number = exceptNumber {
+        if let number = rule.exceptNumber {
             allCardsArray = allCardsArray.filter{$0.filterNumber(number)}
         }
-        for startIndex in 0..<playerCount {
-            let player = LuckyCardPlayer(owningCards: Array(allCardsArray[startIndex * playerCardCount...startIndex * playerCardCount + playerCardCount - 1]))
-            playerArray.append(player)
+        for startIndex in 0..<rule.playerCount {
+            let player = LuckyCardPlayer(owningCards: Array(allCardsArray[startIndex * rule.playerCardCount...startIndex * rule.playerCardCount + rule.playerCardCount - 1]))
+            LuckyGame.shared.playerArray.append(player)
         }
-        bottom = BottomPlayer(owningCards: Array(allCardsArray[playerCount * playerCardCount...allCardsArray.count-1]))
+        LuckyGame.shared.bottom = BottomPlayer(owningCards: Array(allCardsArray[rule.playerCount * rule.playerCardCount...allCardsArray.count-1]))
     }
 }
 
@@ -50,5 +46,5 @@ protocol Deck {
     
     func makeAllShuffledCards()
     func printAllCards()
-    func distributedCards(playerArray: inout [LuckyCardPlayer], playerCount: Int, playerCardCount: Int, bottomCardCount: Int, exceptNumber: LuckyCard.Number?, bottom: inout BottomPlayer)
+    func distributedCards(rule: LuckyGame.CardRule)
 }
