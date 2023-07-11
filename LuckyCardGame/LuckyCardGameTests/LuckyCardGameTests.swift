@@ -3,43 +3,81 @@ import XCTest
 
 final class LuckyCardGameTests: XCTestCase {
     
-    var game: LuckyGame!
+    let sut = LuckyGame()
     
     override func setUpWithError() throws {
         try super.setUpWithError()
-        //game = LuckyGame()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
     }
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
+    override func tearDownWithError() throws { }
 
     func testExample() throws {
-        try testCardDistribute(playerCount: 3)
-        try testAllPlayerCanSort(playerCount: 3)
-//        try testAllPlayerCanSort(playerCount: 3)
-//        try testAllPlayerCanSort(playerCount: 4)
-//        try testAllPlayerCanSort(playerCount: 5)
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+        try testLuckyGame(playerCount: 3)
+    }
+    
+    func testLuckyGame(playerCount: Int) throws {
+        try testCardDistribute(playerCount: playerCount)
+        for playerIndex in 0..<playerCount {
+            try testPlayerCanSort(playerIndex: playerIndex)
+            try testPrintPlayerCards(playerIndex: playerIndex)
+            try testHaveSameNumberInOwningCards(playerIndex: playerIndex)
+        }
+        try testBottomCanSort()
+        try testPrintBottomCards()
     }
     
     func testCardDistribute(playerCount: Int) throws {
-        game.setRule(playerCount: playerCount)
-        print(game.rule.playerCount, playerCount)
-        XCTAssertTrue(game.playerArray.allSatisfy({$0.cardCount == game.rule.playerCardCount}))
-        XCTAssertTrue(game.bottom.cardCount == game.rule.bottomCardCount)
+        sut.rule.setRule(playerCount: playerCount)
+        sut.makeDeckDistribute(playerCount: playerCount)
+        XCTAssertTrue(sut.playerArray.allSatisfy({$0.cardCount == sut.rule.playerCardCount}))
+        XCTAssertTrue(sut.bottom.cardCount == sut.rule.bottomCardCount)
     }
     
-    func testAllPlayerCanSort(playerCount: Int) throws {
-        game.setRule(playerCount: playerCount)
-        for i in 0..<playerCount {
-            game.playerArray[i].sortOwningCards()
-            XCTAssertEqual(game.playerArray[i].owningCards, game.playerArray[i].owningCards.sorted())
+    func testBottomCanSort() throws {
+        sut.bottom.sortOwningCards()
+        XCTAssertEqual(sut.bottom.owningCards, sut.bottom.owningCards.sorted())
+//        print("bottom")
+//        print(game.bottom.owningCards.forEach({print($0.description)}))
+    }
+    
+    func testPlayerCanSort(playerIndex: Int) throws {
+        sut.playerArray[playerIndex].sortOwningCards()
+        XCTAssertEqual(sut.playerArray[playerIndex].owningCards, sut.playerArray[playerIndex].owningCards.sorted())
+//        print("player \(playerIndex)")
+//        print(game.playerArray[playerIndex].owningCards.forEach({print($0.description)}))
+    }
+    
+    func testPrintPlayerCards(playerIndex: Int) throws {
+        print(UnicodeScalar(playerIndex+65)!, "[",sut.playerArray[playerIndex].owningCards.map({$0.description}).joined(separator:", "),"]")
+    }
+    
+    func testPrintBottomCards() throws {
+        print("바닥", "[",sut.bottom.owningCards.map({$0.description}).joined(separator:", "),"]")
+    }
+
+    func testHaveSameNumberInOwningCards(playerIndex: Int) throws {
+        var sameThreeNumberCard = false
+        let cardArray = sut.playerArray[playerIndex].owningCards
+        var count = 1
+        for j in 1..<cardArray.count {
+            if cardArray[j].number != cardArray[j-1].number {
+                count = 1
+                continue
+            }
+            count += 1
+            if count == 3 {
+                sameThreeNumberCard = true
+                print("연속 3개!!!")
+//                print("player \(playerIndex+1)")
+//                print(cardArray[j].number)
+//                print(cardArray.forEach({print($0.description, terminator: " ")}))
+                count = 0
+            }
+            XCTAssertTrue(sameThreeNumberCard)
         }
+    }
+    
+    func testHaveSameNumberInGame(playerIndex: Int) {
+        
     }
 }

@@ -3,7 +3,7 @@ import UIKit
 
 final class CardView: UIView {
     
-    let card: LuckyCard
+    private let card: LuckyCard
     
     enum Size {
         static let cardPadding: CGFloat = 5
@@ -20,6 +20,7 @@ final class CardView: UIView {
             case .front: makeFrontCardView()
             case .back: makeBackCardView()
         }
+        configureUI()
         setFrame(index: index, cardCount: cardCount, isPlayer: isPlayer)
     }
     
@@ -27,7 +28,7 @@ final class CardView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setDefaultFrame() {
+    private func configureUI() {
         backgroundColor = .white
         layer.cornerRadius = ConstantSize.cornerRadiusDegree
         layer.borderWidth = Size.borderWidth
@@ -35,9 +36,6 @@ final class CardView: UIView {
     }
     
     private func setFrame(index: Int, cardCount: Int, isPlayer: Bool) {
-        
-        setDefaultFrame()
-        
         if isPlayer {
             let interval = (ConstantSize.subViewWidth - 2*Size.cardPadding - CGFloat(cardCount)*Size.cardWidth)/CGFloat(cardCount-1)
             frame =  CGRect(x: Size.cardPadding + CGFloat(index) * (Size.cardWidth + interval), y: Size.cardPadding, width: Size.cardWidth, height: Size.cardHeight)

@@ -167,22 +167,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "C4D33397-BD82-4E4A-AFF6-795AFC280FB6"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "LuckyCardGame/App/ViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "18"
-            endingLineNumber = "18"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "21147158-FA36-4928-A5FA-E6EEE9CB8807"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -190,8 +174,8 @@
             filePath = "LuckyCardGame/View/ConstantSize.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "11"
-            endingLineNumber = "11"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
             landmarkName = "ConstantSize"
             landmarkType = "13">
             <Locations>
@@ -274,54 +258,6 @@
             endingLineNumber = "2"
             landmarkName = "unknown"
             landmarkType = "0">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "14A67398-D6EE-4A68-BA12-11BBEACB3D1E"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "LuckyCardGame/View/CardView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "16"
-            endingLineNumber = "16"
-            landmarkName = "init(card:index:cardCount:isPlayer:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "14A67398-D6EE-4A68-BA12-11BBEACB3D1E - 563b55aeeb7fa8f2"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "LuckyCardGame.CardView.__allocating_init(card: LuckyCardGame.LuckyCard) -&gt; LuckyCardGame.CardView"
-                  moduleName = "LuckyCardGame"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/soom/ios-luckycardgame/LuckyCardGame/LuckyCardGame/View/CardView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "24">
-               </Location>
-               <Location
-                  uuid = "14A67398-D6EE-4A68-BA12-11BBEACB3D1E - 892347cebc08bfdd"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "LuckyCardGame.CardView.init(card: LuckyCardGame.LuckyCard) -&gt; LuckyCardGame.CardView"
-                  moduleName = "LuckyCardGame"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/soom/ios-luckycardgame/LuckyCardGame/LuckyCardGame/View/CardView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "8"
-                  endingLineNumber = "8"
-                  offsetFromSymbolStart = "100">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -412,8 +348,8 @@
             filePath = "LuckyCardGame/View/CardView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
             landmarkName = "makeFrontCardView()"
             landmarkType = "7">
             <Locations>
@@ -507,88 +443,56 @@
             filePath = "LuckyCardGame/View/ElementView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35"
-            landmarkName = "makeCardView()"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "makePlayerCardView(player:playerIndex:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "117FE584-432F-4CA6-8C34-5D21DA32EE02"
+            uuid = "D61258AC-DB85-4F99-B050-5D6316A00997"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "LuckyCardGameTests/LuckyCardGameTests.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2"
-            endingLineNumber = "2"
-            landmarkName = "unknown"
-            landmarkType = "0">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "48B9E5A9-F3D1-4274-9C73-FAB694FF3265"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "LuckyCardGameTests/LuckyCardGameTests.swift"
+            filePath = "LuckyCardGame/LuckyCard/LuckyGame.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "41"
             endingLineNumber = "41"
-            landmarkName = "testAllPlayerCanSort(playerCount:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "E900E8BD-8060-4C5E-BC9C-C966B1A66079"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "LuckyCardGameTests/LuckyCardGameTests.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
-            landmarkName = "testCardDistribute(playerCount:)"
+            landmarkName = "setRule(playerCount:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "E900E8BD-8060-4C5E-BC9C-C966B1A66079 - ba1e398dbe09a88a"
+                  uuid = "D61258AC-DB85-4F99-B050-5D6316A00997 - ee5257bc5a07c8c"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "LuckyCardGameTests.LuckyCardGameTests.testCardDistribute(playerCount: Swift.Int) throws -&gt; ()"
-                  moduleName = "LuckyCardGameTests"
+                  symbolName = "LuckyCardGame.LuckyGame.setRule(playerCount: Swift.Int) -&gt; ()"
+                  moduleName = "LuckyCardGame"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/soom/ios-luckycardgame/LuckyCardGame/LuckyCardGameTests/LuckyCardGameTests.swift"
+                  urlString = "file:///Users/soom/ios-luckycardgame/LuckyCardGame/LuckyCardGame/LuckyCard/LuckyGame.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "40"
-                  endingLineNumber = "40"
-                  offsetFromSymbolStart = "232">
+                  startingLineNumber = "37"
+                  endingLineNumber = "37"
+                  offsetFromSymbolStart = "696">
                </Location>
                <Location
-                  uuid = "E900E8BD-8060-4C5E-BC9C-C966B1A66079 - ba1e398dbe09a8e9"
+                  uuid = "D61258AC-DB85-4F99-B050-5D6316A00997 - ee5257bc5a07c8c"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "LuckyCardGameTests.LuckyCardGameTests.testCardDistribute(playerCount: Swift.Int) throws -&gt; ()"
-                  moduleName = "LuckyCardGameTests"
+                  symbolName = "LuckyCardGame.LuckyGame.setRule(playerCount: Swift.Int) -&gt; ()"
+                  moduleName = "LuckyCardGame"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/soom/ios-luckycardgame/LuckyCardGame/LuckyCardGameTests/LuckyCardGameTests.swift"
+                  urlString = "file:///Users/soom/ios-luckycardgame/LuckyCardGame/LuckyCardGame/LuckyCard/LuckyGame.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "41"
-                  endingLineNumber = "41"
-                  offsetFromSymbolStart = "348">
+                  startingLineNumber = "37"
+                  endingLineNumber = "37"
+                  offsetFromSymbolStart = "628">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -596,49 +500,49 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "F6558570-F225-4702-8344-45CDAD24B92F"
+            uuid = "6C316343-F2DA-448F-9665-4070180B8849"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "LuckyCardGameTests/LuckyCardGameTests.swift"
+            filePath = "LuckyCardGame/LuckyCard/LuckyGame.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
-            landmarkName = "testCardDistribute(playerCount:)"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "setRule(playerCount:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "10AE9520-1FE1-4230-8E92-7FA7C6EAA643"
+            uuid = "0C97ECCE-D6C5-45B1-994E-D12161CE36C0"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LuckyCardGameTests/LuckyCardGameTests.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
-            landmarkName = "testCardDistribute(playerCount:)"
-            landmarkType = "7">
+            startingLineNumber = "4"
+            endingLineNumber = "4"
+            landmarkName = "LuckyCardGameTests"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "039C0703-4861-4F5E-8ABE-DC3457CCED0C"
+            uuid = "D6CC9136-78B8-4F7D-9CC5-6B44906E376A"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LuckyCardGameTests/LuckyCardGameTests.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35"
-            landmarkName = "testCardDistribute(playerCount:)"
-            landmarkType = "7">
+            startingLineNumber = "17"
+            endingLineNumber = "17"
+            landmarkName = "LuckyCardGameTests"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

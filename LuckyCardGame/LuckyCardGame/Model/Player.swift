@@ -25,6 +25,7 @@ final class BottomPlayer: Player {
         owningCards.sort()
     }
 }
+
 protocol Player {
     associatedtype Card
     var owningCards: [Card] { get set }

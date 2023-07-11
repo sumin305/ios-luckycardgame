@@ -5,10 +5,10 @@ import Foundation
  - struct는 인스턴스를 heap영역이 아닌 stack 영역에 저장된다고 알고 있습니다. 이러한 이유로 class보다 인스턴스를 생성 속도가 매우 빠릅니다.
  - 또한, 상속과 메모리 누수를 막기 위해 struct를 사용하였습니다.
  */
-final class LuckyCardDeck: Deck {
+final class LuckyCardDeck {
 
-    var allCardsArray: [LuckyCard] = []
-    let cardNumberRange = 1...12
+    private var allCardsArray: [LuckyCard] = []
+    private let cardNumberRange = 1...12
     
     func makeAllShuffledCards() {
         allCardsArray = []
@@ -25,26 +25,16 @@ final class LuckyCardDeck: Deck {
     }
     
     // LuckyCardManager에게서 지시받은 카드 나눠주기
-    func distributedCards(rule: LuckyGame.CardRule) {
-        LuckyGame.shared.playerArray = []
+    func distributedCards(rule: LuckyCardRule) -> [[LuckyCard]] {
+        var luckyCardArray: [[LuckyCard]] = []
         makeAllShuffledCards()
         if let number = rule.exceptNumber {
             allCardsArray = allCardsArray.filter{$0.filterNumber(number)}
         }
         for startIndex in 0..<rule.playerCount {
-            let player = LuckyCardPlayer(owningCards: Array(allCardsArray[startIndex * rule.playerCardCount...startIndex * rule.playerCardCount + rule.playerCardCount - 1]))
-            LuckyGame.shared.playerArray.append(player)
+            luckyCardArray.append(Array(allCardsArray[startIndex * rule.playerCardCount...startIndex * rule.playerCardCount + rule.playerCardCount - 1]))
         }
-        LuckyGame.shared.bottom = BottomPlayer(owningCards: Array(allCardsArray[rule.playerCount * rule.playerCardCount...allCardsArray.count-1]))
+        luckyCardArray.append(Array(allCardsArray[rule.playerCount * rule.playerCardCount...allCardsArray.count-1]))
+        return luckyCardArray
     }
-}
-
-protocol Deck {
-    associatedtype Card
-    var cardNumberRange: ClosedRange<Int> { get }
-    var allCardsArray: [Card] { get set }
-    
-    func makeAllShuffledCards()
-    func printAllCards()
-    func distributedCards(rule: LuckyGame.CardRule)
 }

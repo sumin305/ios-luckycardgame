@@ -33,6 +33,7 @@ final class LuckyCard: Card, Comparable {
         case back
     }
     
+    // 외부에서 읽기만 가능하고 내부에서만 수정이 가능함
     private(set) var number: Number
     private(set) var animal: Animal
     private(set) var state: CardState
@@ -43,17 +44,6 @@ final class LuckyCard: Card, Comparable {
         self.state = state
     }
     
-    var description: String {
-        return animal.rawValue + String(format: "%02d", self.number.rawValue)
-    }
-    
-    static func == (lhs: LuckyCard, rhs: LuckyCard) -> Bool {
-        return lhs.number.rawValue == rhs.number.rawValue
-    }
-    
-    static func < (lhs: LuckyCard, rhs: LuckyCard) -> Bool {
-        return lhs.number.rawValue < rhs.number.rawValue
-    }
     // private를 사용한 프로퍼티 이용
     func filterNumber(_ number: Number) -> Bool {
         if self.number == number {
@@ -73,3 +63,15 @@ final class LuckyCard: Card, Comparable {
 }
 
 protocol Card { }
+
+extension LuckyCard: CustomStringConvertible {
+    var description: String {
+        return animal.rawValue + String(format: "%02d", self.number.rawValue)
+    }
+    static func == (lhs: LuckyCard, rhs: LuckyCard) -> Bool {
+        return lhs.number.rawValue == rhs.number.rawValue
+    }
+    static func < (lhs: LuckyCard, rhs: LuckyCard) -> Bool {
+        return lhs.number.rawValue < rhs.number.rawValue
+    }
+}
