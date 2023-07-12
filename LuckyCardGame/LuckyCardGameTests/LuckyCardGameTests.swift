@@ -19,11 +19,10 @@ final class LuckyCardGameTests: XCTestCase {
         try testCardDistribute(playerCount: playerCount)
         for playerIndex in 0..<playerCount {
             try testPlayerCanSort(playerIndex: playerIndex)
-            try testPrintPlayerCards(playerIndex: playerIndex)
             try testHaveSameNumberInOwningCards(playerIndex: playerIndex)
         }
         try testBottomCanSort()
-        try testPrintBottomCards()
+        try testHaveSameNumberInGame()
     }
     
     func testCardDistribute(playerCount: Int) throws {
@@ -36,24 +35,13 @@ final class LuckyCardGameTests: XCTestCase {
     func testBottomCanSort() throws {
         sut.bottom.sortOwningCards()
         XCTAssertEqual(sut.bottom.owningCards, sut.bottom.owningCards.sorted())
-//        print("bottom")
-//        print(game.bottom.owningCards.forEach({print($0.description)}))
     }
     
     func testPlayerCanSort(playerIndex: Int) throws {
         sut.playerArray[playerIndex].sortOwningCards()
         XCTAssertEqual(sut.playerArray[playerIndex].owningCards, sut.playerArray[playerIndex].owningCards.sorted())
-//        print("player \(playerIndex)")
-//        print(game.playerArray[playerIndex].owningCards.forEach({print($0.description)}))
     }
-    
-    func testPrintPlayerCards(playerIndex: Int) throws {
-        print(UnicodeScalar(playerIndex+65)!, "[",sut.playerArray[playerIndex].owningCards.map({$0.description}).joined(separator:", "),"]")
-    }
-    
-    func testPrintBottomCards() throws {
-        print("바닥", "[",sut.bottom.owningCards.map({$0.description}).joined(separator:", "),"]")
-    }
+
 
     func testHaveSameNumberInOwningCards(playerIndex: Int) throws {
         var sameThreeNumberCard = false
@@ -68,16 +56,17 @@ final class LuckyCardGameTests: XCTestCase {
             if count == 3 {
                 sameThreeNumberCard = true
                 print("연속 3개!!!")
-//                print("player \(playerIndex+1)")
-//                print(cardArray[j].number)
-//                print(cardArray.forEach({print($0.description, terminator: " ")}))
                 count = 0
             }
             XCTAssertTrue(sameThreeNumberCard)
         }
     }
     
-    func testHaveSameNumberInGame(playerIndex: Int) {
+    func testHaveSameNumberInGame() throws {
+        let card1 = LuckyCard(number: .eight, animal: .🐮, state: .back)
+        let card2 = LuckyCard(number: .eight, animal: .🐱, state: .back)
+        let card3 = LuckyCard(number: .eight, animal: .🐶, state: .back)
         
+        XCTAssertTrue(card1.number == card2.number && card2.number == card3.number)
     }
 }

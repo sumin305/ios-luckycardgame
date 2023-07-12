@@ -5,7 +5,7 @@ final class LuckyGameViewController: UIViewController {
     // LuckyGame 객체 유일한 생성
     private let game = LuckyGame()
     
-    private var playerCount: Int!
+    private var playerCount:  Int!
     private var segmentControl: UISegmentedControl!
     private var middleView: UIView!
     private var bottomView: ElementView!
@@ -20,8 +20,8 @@ final class LuckyGameViewController: UIViewController {
         // SafeAreaInsets이 바뀔 때마다 계산 후 frame 설정
         ConstantSize.topSafeArea = view.safeAreaInsets.top
         ConstantSize.bottomSafeArea = view.safeAreaInsets.bottom
-        
         // 프로퍼티 초기화
+        
         middleView = UIView()
         bottomView = ElementView(bottom: game.bottom)
         segmentControl = UISegmentedControl(items: ["3명", "4명", "5명"])
