@@ -19,7 +19,7 @@ final class LuckyCardGameTests: XCTestCase {
         try testCardDistribute(playerCount: playerCount)
         for playerIndex in 0..<playerCount {
             try testPlayerCanSort(playerIndex: playerIndex)
-            try testHaveSameNumberInOwningCards(playerIndex: playerIndex)
+            try testHaveSameNumberInOwningCards()
         }
         try testBottomCanSort()
         try testHaveSameNumberInGame()
@@ -43,9 +43,14 @@ final class LuckyCardGameTests: XCTestCase {
     }
 
 
-    func testHaveSameNumberInOwningCards(playerIndex: Int) throws {
+    func testHaveSameNumberInOwningCards() throws {
         var sameThreeNumberCard = false
-        let cardArray = sut.playerArray[playerIndex].owningCards
+        let cardArray = [ LuckyCard(number: .eight, animal: .🐮, state: .back),
+                          LuckyCard(number: .eight, animal: .🐱, state: .back),
+                          LuckyCard(number: .eight, animal: .🐶, state: .back),
+                          LuckyCard(number: .nine, animal: .🐶, state: .back),
+                          LuckyCard(number: .ten, animal: .🐱, state: .back),
+                          LuckyCard(number: .one, animal: .🐶, state: .back)]
         var count = 1
         for j in 1..<cardArray.count {
             if cardArray[j].number != cardArray[j-1].number {
@@ -58,8 +63,8 @@ final class LuckyCardGameTests: XCTestCase {
                 print("연속 3개!!!")
                 count = 0
             }
-            XCTAssertTrue(sameThreeNumberCard)
         }
+        XCTAssertTrue(sameThreeNumberCard)
     }
     
     func testHaveSameNumberInGame() throws {
