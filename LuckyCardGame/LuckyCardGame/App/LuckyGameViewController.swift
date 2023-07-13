@@ -5,32 +5,30 @@ final class LuckyGameViewController: UIViewController {
     // LuckyGame 객체 유일한 생성
     private let game = LuckyGame()
     
-    private var playerCount:  Int!
-    private var segmentControl: UISegmentedControl!
-    private var middleView: UIView!
-    private var bottomView: ElementView!
+    private var playerCount:  Int = 3
+    private var segmentControl = UISegmentedControl(items: ["3명", "4명", "5명"])
+    private var middleView = UIView()
+    private lazy var bottomView = ElementView(bottom: game.bottom)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
     }
-
+    
     override func viewSafeAreaInsetsDidChange() {
         super.viewSafeAreaInsetsDidChange()
-        // SafeAreaInsets이 바뀔 때마다 계산 후 frame 설정
-        ConstantSize.topSafeArea = view.safeAreaInsets.top
-        ConstantSize.bottomSafeArea = view.safeAreaInsets.bottom
-        // 프로퍼티 초기화
-        
-        middleView = UIView()
-        bottomView = ElementView(bottom: game.bottom)
-        segmentControl = UISegmentedControl(items: ["3명", "4명", "5명"])
-        playerCount = 3
+        setSafeAreaSize()
         
         // UI 초기화
         configurateUI()
         addSubViews()
         setFrame(playerCount: playerCount)
+    }
+    
+    private func setSafeAreaSize() {
+        // SafeAreaInsets이 바뀔 때마다 계산 후 frame 설정
+        ConstantSize.topSafeArea = view.safeAreaInsets.top
+        ConstantSize.bottomSafeArea = view.safeAreaInsets.bottom
     }
     
     private func configurateUI() {
@@ -65,13 +63,13 @@ final class LuckyGameViewController: UIViewController {
         playerCount = segmentControl.selectedSegmentIndex + 3
         
         // model 작업 - 게임 카드 비율 변경 후 나눠주기
-        game.rule.setRule(playerCount: playerCount)
+        game.setRule(playerCount: playerCount)
         game.makeDeckDistribute(playerCount: playerCount)
         
         // view 작업 - 화면 게임 카드 비율에 맞게 다시 그리기
         setViewBySegmentController(playerCount: playerCount)
     }
-  
+    
     // middleView, bottomView 초기화
     private func removeSubView() {
         middleView.subviews.forEach({$0.removeFromSuperview()})
@@ -89,6 +87,6 @@ final class LuckyGameViewController: UIViewController {
         }
         setFrame(playerCount: playerCount)
     }
-   
+    
     
 }

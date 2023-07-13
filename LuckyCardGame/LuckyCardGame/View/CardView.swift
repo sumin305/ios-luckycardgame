@@ -35,11 +35,15 @@ final class CardView: UIView {
         layer.borderColor = UIColor.black.cgColor
     }
     
+    // cardCount, isPlayer에 따른 frame 설정 메서드
     private func setFrame(index: Int, cardCount: Int, isPlayer: Bool) {
+        // Player View일 경우
         if isPlayer {
             let interval = (ConstantSize.subViewWidth - 2*Size.cardPadding - CGFloat(cardCount)*Size.cardWidth)/CGFloat(cardCount-1)
             frame =  CGRect(x: Size.cardPadding + CGFloat(index) * (Size.cardWidth + interval), y: Size.cardPadding, width: Size.cardWidth, height: Size.cardHeight)
-        } else {
+        }
+        // 마당패인 경우
+        else {
             switch cardCount {
             case 9:
                 let widthInterval = (ConstantSize.subViewWidth - 5*Size.cardWidth) / 6
@@ -60,14 +64,14 @@ final class CardView: UIView {
     }
     
     private func makeFrontCardView()  {
-        let numberLabel1 : UILabel = {
+        let topNumberLabel : UILabel = {
             let label = UILabel()
             label.text = String(card.number.rawValue)
             label.font = UIFont(name: "AvenirNext-Bold", size: Size.fontSize)
             label.frame =  CGRect(x: Size.cardPadding, y: Size.cardPadding , width: Size.fontSize+Size.cardPadding, height: Size.fontSize+Size.cardPadding)
             return label
         }()
-        let numberLabel2 : UILabel = {
+        let bottomNumberLabel : UILabel = {
             let label = UILabel()
             label.text = String(card.number.rawValue)
             label.font = UIFont(name: "AvenirNext-Bold", size: Size.fontSize)
@@ -82,8 +86,8 @@ final class CardView: UIView {
             label.frame =  CGRect(x: Size.cardWidth/2-Size.fontSize, y: Size.cardHeight/2-Size.fontSize , width: Size.fontSize * 2 + Size.cardPadding, height: Size.fontSize * 2 + Size.cardPadding)
             return label
         }()
-        self.addSubview(numberLabel1)
-        self.addSubview(numberLabel2)
+        self.addSubview(topNumberLabel)
+        self.addSubview(bottomNumberLabel)
         self.addSubview(animalLabel)
     }
     

@@ -348,8 +348,8 @@
             filePath = "LuckyCardGame/View/CardView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
             landmarkName = "makeFrontCardView()"
             landmarkType = "7">
             <Locations>
@@ -443,8 +443,8 @@
             filePath = "LuckyCardGame/View/ElementView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
             landmarkName = "makePlayerCardView(player:playerIndex:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -527,6 +527,22 @@
             endingLineNumber = "4"
             landmarkName = "LuckyCardGameTests"
             landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9993C40C-3059-4213-9FC6-9E621BD6463D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LuckyCardGameTests/LuckyCardGameTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
+            landmarkName = "testHaveSameNumberInGame()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

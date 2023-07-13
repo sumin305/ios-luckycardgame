@@ -93,10 +93,10 @@
 		ED15ABE32A556F1F00B743BF /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				ED1B0BF42A55485C00D2869F /* LuckyCard.swift */,
-				ED15ABE12A55520200B743BF /* LuckCardDeck.swift */,
-				ED7FC4BB2A5D9C1B00BB5EE6 /* LuckyCardRule.swift */,
 				EDCBAE6C2A57B3AF00338621 /* LuckyGame.swift */,
+				ED7FC4BB2A5D9C1B00BB5EE6 /* LuckyCardRule.swift */,
+				ED15ABE12A55520200B743BF /* LuckCardDeck.swift */,
+				ED1B0BF42A55485C00D2869F /* LuckyCard.swift */,
 				ED70B0472A57099600423246 /* Player.swift */,
 			);
 			path = Model;

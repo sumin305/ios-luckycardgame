@@ -1,12 +1,12 @@
 import Foundation
 
 // 게임당 하나만 갖는 game manager
-final class LuckyGame {
-
-    var rule = LuckyCardRule()
-    var deck = LuckyCardDeck()
-    var playerArray: [LuckyCardPlayer] = []
-    var bottom: BottomPlayer = BottomPlayer(owningCards: [])
+final class LuckyGame: Game {
+    
+    private(set) var rule = LuckyCardRule()
+    private(set) var deck = LuckyCardDeck()
+    private(set) var playerArray: [LuckyCardPlayer] = []
+    private(set) var bottom: BottomPlayer = BottomPlayer(owningCards: [])
     
     init() {
         printAnimalCards()
@@ -14,14 +14,6 @@ final class LuckyGame {
         makeDeckDistribute(playerCount: rule.playerCount)
     }
     
-    // 미션2 출력 구현
-    func printAnimalCards() {
-        print("W1 - mission 2")
-        deck.makeAllShuffledCards()
-        deck.printAllCards()
-    }
-    
-    // Deck에서 나눠준 카드로 분배
     func makeDeckDistribute(playerCount: Int) {
         let luckyCardArray = deck.distributedCards(rule: rule)
         playerArray = []
@@ -31,4 +23,19 @@ final class LuckyGame {
         bottom = BottomPlayer(owningCards: luckyCardArray[luckyCardArray.count-1])
     }
     
+    func setRule(playerCount: Int) {
+        rule.setRule(playerCount: playerCount)
+    }
+    
+    // 미션2 출력 구현
+    func printAnimalCards() {
+        print("W1 - mission 2")
+        deck.makeAllShuffledCards()
+        deck.printAllCards()
+    }
+}
+
+protocol Game {
+    func makeDeckDistribute(playerCount: Int)
+    func setRule(playerCount: Int)
 }
