@@ -33,7 +33,7 @@ final class LuckyCardGameTests: XCTestCase {
         // given
         
         // when
-        sut.rule.setRule(playerCount: playerCount)
+        sut.setRule(playerCount: playerCount)
         sut.makeDeckDistribute(playerCount: playerCount)
         XCTAssertTrue(sut.playerArray.allSatisfy({$0.cardCount == sut.rule.playerCardCount}))
         XCTAssertTrue(sut.bottom.cardCount == sut.rule.bottomCardCount)

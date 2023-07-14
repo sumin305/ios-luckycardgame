@@ -15,6 +15,7 @@
 		ED73B0BF2A5AB8380022A69D /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED73B0BE2A5AB8380022A69D /* CardView.swift */; };
 		ED7FC4BC2A5D9C1B00BB5EE6 /* LuckyCardRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7FC4BB2A5D9C1B00BB5EE6 /* LuckyCardRule.swift */; };
 		EDCBAE6D2A57B3AF00338621 /* LuckyGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDCBAE6C2A57B3AF00338621 /* LuckyGame.swift */; };
+		EDCBC8212A60DCCD00065D70 /* LuckyGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDCBC8202A60DCCD00065D70 /* LuckyGameView.swift */; };
 		EDD1C6DC2A53C70500D5CA59 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD1C6DB2A53C70500D5CA59 /* AppDelegate.swift */; };
 		EDD1C6DE2A53C70500D5CA59 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD1C6DD2A53C70500D5CA59 /* SceneDelegate.swift */; };
 		EDD1C6E02A53C70500D5CA59 /* LuckyGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD1C6DF2A53C70500D5CA59 /* LuckyGameViewController.swift */; };
@@ -51,6 +52,7 @@
 		ED73B0BE2A5AB8380022A69D /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		ED7FC4BB2A5D9C1B00BB5EE6 /* LuckyCardRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyCardRule.swift; sourceTree = "<group>"; };
 		EDCBAE6C2A57B3AF00338621 /* LuckyGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyGame.swift; sourceTree = "<group>"; };
+		EDCBC8202A60DCCD00065D70 /* LuckyGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyGameView.swift; sourceTree = "<group>"; };
 		EDD1C6D82A53C70500D5CA59 /* LuckyCardGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LuckyCardGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDD1C6DB2A53C70500D5CA59 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EDD1C6DD2A53C70500D5CA59 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 				ED1B0BF22A5542F300D2869F /* ConstantSize.swift */,
 				ED73B0BE2A5AB8380022A69D /* CardView.swift */,
 				ED1B0BF02A5542BE00D2869F /* ElementView.swift */,
+				EDCBC8202A60DCCD00065D70 /* LuckyGameView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -313,6 +316,7 @@
 				EDCBAE6D2A57B3AF00338621 /* LuckyGame.swift in Sources */,
 				EDD1C6DE2A53C70500D5CA59 /* SceneDelegate.swift in Sources */,
 				ED1B0BF52A55485C00D2869F /* LuckyCard.swift in Sources */,
+				EDCBC8212A60DCCD00065D70 /* LuckyGameView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -490,6 +494,7 @@
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -519,6 +524,7 @@
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
