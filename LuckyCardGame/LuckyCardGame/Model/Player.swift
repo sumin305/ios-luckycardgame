@@ -74,6 +74,13 @@ final class LuckyCardPlayer: Player {
         // 자신의 앞단 혹은 뒷단 패에 같은 숫자가 없을 때 -> 난수 3개 뽑기
         return []
     }
+    func allThreeCardsArraySame(threeCardsArray: [LuckyCard]) -> Bool {
+        if (threeCardsArray[0] == threeCardsArray[1]) && (threeCardsArray[1] == threeCardsArray[2]) {
+            return true
+        } else {
+            return false
+        }
+    }
 }
 
 final class BottomPlayer: Player {
@@ -102,6 +109,7 @@ final class BottomPlayer: Player {
         }
         return (nil, false)
     }
+
 }
 
 protocol Player {

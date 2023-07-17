@@ -128,10 +128,10 @@ final class LuckyCardGameTests: XCTestCase {
     
     // 특정 참가자와 해당 참가자 카드 중에 가장 낮은 숫자 또는 가장 높은 숫자, 바닥 카드 중 아무거나를 선택해서 3개가 같은지 판단할 수 있어야 한다.
     func testHaveSameNumberInGame() throws {
-        for testCase in testCases {
-            let game = LuckyGame()
-            game.makeDeckDistribute(playerCount: testCase.playerCount)
-        }
-        
+        let threeSameCardsArray = [LuckyCard(number: .eight, animal: .🐮, state: .back),
+                                   LuckyCard(number: .eight, animal: .🐱, state: .back),
+                                   LuckyCard(number: .eight, animal: .🐶, state: .back)]
+        let testPlayer = LuckyCardPlayer(owningCards: [])
+        XCTAssertTrue(testPlayer.allThreeCardsArraySame(threeCardsArray: threeSameCardsArray))
     }
 }
