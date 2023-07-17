@@ -32,4 +32,8 @@ final class LuckyCardDeck {
         luckyCardArray.append(Array(allCardsArray[rule.playerCount * rule.playerCardCount...allCardsArray.count-1]))
         return luckyCardArray
     }
+    
+    func getAllCardsArray() -> [LuckyCard] {
+        return allCardsArray
+    }
 }

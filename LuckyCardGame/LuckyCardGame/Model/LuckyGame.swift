@@ -33,6 +33,27 @@ final class LuckyGame: Game {
         deck.makeAllShuffledCards()
         deck.printAllCards()
     }
+    
+    func judgeThreeCardsSame(selectedCards: [LuckyCard]) -> Bool {
+        let targetNumber = selectedCards[0].number
+        if selectedCards[1].number == targetNumber && selectedCards[2].number == targetNumber {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    func selectPlayerThreeCards(playerIndex: Int) -> [LuckyCard] {
+        let player = playerArray[playerIndex]
+        let selectedCards = player.selectThreeCards()
+        switch (selectedCards.count) {
+            case 3:
+                return selectedCards
+            case 4:
+                selectedCards.append()
+                
+        }
+    }
 }
 
 protocol Game {

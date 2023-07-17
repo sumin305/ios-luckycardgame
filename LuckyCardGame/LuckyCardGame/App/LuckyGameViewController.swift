@@ -4,28 +4,23 @@ final class LuckyGameViewController: UIViewController {
     
     // LuckyGame 객체 유일한 생성
     private let game = LuckyGame()
-    private var gameView: LuckyGameView {
-        view as! LuckyGameView
-    }
-    
-    override func loadView() {
-        super.loadView()
-        view = LuckyGameView(controller: self, playerCount: game.rule.playerCount, playerArray: game.playerArray, bottom: game.bottom)
-    }
+    private var gameView: LuckyGameView!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        gameView.addTargetToSegmentControl(self, #selector(segmentControllChanged(_:)), for: .valueChanged)
-        
     }
     
     override func viewSafeAreaInsetsDidChange() {
         super.viewSafeAreaInsetsDidChange()
         setSafeAreaSize()
-        
+        gameView = LuckyGameView(controller: self, frame: view.frame, playerCount: game.rule.playerCount, playerArray: game.playerArray, bottom: game.bottom)
+        gameView.addTargetToSegmentControl(self, #selector(segmentControllChanged(_:)), for: .valueChanged)
         gameView.setFrame(playerCount: game.rule.playerCount)
         // UI 초기화
+        view.addSubview(gameView)
+        gameView.frame = view.frame
     }
     
     private func setSafeAreaSize() {
@@ -42,6 +37,6 @@ final class LuckyGameViewController: UIViewController {
         game.makeDeckDistribute(playerCount: playerCount)
         
         // view 작업 - 화면 게임 카드 비율에 맞게 다시 그리기
-        gameView.setViewBySegmentController(playerArray: game.playerArray, bottom: game.bottom)
+        gameView.setViewBySegmentController(playerCount: playerCount, playerArray: game.playerArray, bottom: game.bottom)
     }
 }

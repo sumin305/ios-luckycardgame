@@ -1,7 +1,7 @@
 import UIKit
 
 final class ElementView: UIView {
-    
+ 
     init(player: LuckyCardPlayer, playerIndex: Int) {
         super.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         configurateUI()

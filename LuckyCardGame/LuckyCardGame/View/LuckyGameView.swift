@@ -9,7 +9,7 @@ final class LuckyGameView: UIView {
     private var playerArray: [LuckyCardPlayer]
     private var bottom: BottomPlayer
     
-    init(controller: LuckyGameViewController, playerCount: Int, playerArray: [LuckyCardPlayer], bottom: BottomPlayer) {
+    init(controller: LuckyGameViewController, frame: CGRect, playerCount: Int, playerArray: [LuckyCardPlayer], bottom: BottomPlayer) {
         self.controller = controller
         self.playerCount = playerCount
         self.playerArray = playerArray
@@ -18,7 +18,6 @@ final class LuckyGameView: UIView {
         setSubViews()
         configurateUI()
         addSubViews()
-        setFrame(playerCount: playerCount)
     }
     
     required init?(coder: NSCoder) {
@@ -31,8 +30,8 @@ final class LuckyGameView: UIView {
         }
         bottomView = ElementView(bottom: bottom)
     }
+    
     private func configurateUI() {
-        //segmentControl.addTarget(self, action: #selector(controller.segmentControllChanged(_: )), for: UIControl.Event.valueChanged)
         segmentControl.selectedSegmentIndex = 0
         segmentControl.backgroundColor = .systemGray5
         segmentControl.tintColor = .white
@@ -63,7 +62,8 @@ final class LuckyGameView: UIView {
        }
        
        // middleView, bottomView 하위 뷰들 지우고 다시 add해서 그리기
-        func setViewBySegmentController(playerArray: [LuckyCardPlayer], bottom: BottomPlayer) {
+    func setViewBySegmentController(playerCount: Int, playerArray: [LuckyCardPlayer], bottom: BottomPlayer) {
+            self.playerCount = playerCount
            removeSubView()
            for i in 0..<playerArray.count {
                middleView.addSubview(ElementView(player: playerArray[i], playerIndex: i))
@@ -73,7 +73,6 @@ final class LuckyGameView: UIView {
            }
            setFrame(playerCount: playerCount)
        }
-    
 }
 
 extension LuckyGameView {
